@@ -1,0 +1,50 @@
+.idea
+
+# Map data - downloaded by `map/bin/download-map.sh`. Sizes range from
+# tens of MB (single city) to ~120 GB (world at z15). Never check in.
+# Wildcard so anywhere the user points MAP_LOCATION at stays clean too.
+*.pmtiles
+
+#artifacts
+server/main
+server/share-server
+server/cmd/vectordump/vectordump
+server/static/
+out/*.apk
+
+# Android — IDE / Gradle / build outputs
+client/Android/.gradle/
+client/Android/build/
+client/Android/local.properties
+client/Android/.idea/
+client/Android/*.iml
+client/Android/app/build/
+client/Android/protocol/build/
+client/Android/app/release/
+client/Android/captures/
+client/Android/.kotlin/
+
+# Per-fork build-time override for the Android client. The canonical
+# defaults file (client/Android.env.defaults) is tracked; client/Android.env
+# is the optional per-key override and stays local. Gradle merges them:
+# values in .env win, anything absent falls back to .defaults.
+client/Android.env
+
+# ============================================================
+# Misc
+# ============================================================
+*.swp
+*.swo
+.DS_Store
+*~
+
+# Private notes / scratch
+CLAUDE_NOTES.md
+/*.png
+/*.gpx
+# server priv key
+server/server_identity.bin
+# server cfg
+server/.env
+
+/keystore

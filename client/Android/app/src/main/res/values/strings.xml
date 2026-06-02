@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    English default strings. Polish translations live in values-pl/strings.xml;
+    keep keys in lockstep. The convention: <screen>_<element> for scoped UI
+    strings, <category>_<short> for cross-cutting things (toasts, statuses).
+    Anything debug-only / log-only stays as a literal in code - translators
+    don't need to deal with developer-facing trace lines.
+-->
+<resources>
+
+    <!-- ===== Common ===== -->
+    <string name="common_back">← Back</string>
+    <string name="common_ok">OK</string>
+    <string name="common_cancel">Cancel</string>
+    <string name="common_dismiss">Dismiss</string>
+    <string name="common_close">Close</string>
+
+    <!-- ===== Main screen ===== -->
+    <string name="main_toggle_gps">GPS</string>
+    <string name="main_toggle_server">Server</string>
+    <string name="main_current_link">current link</string>
+    <string name="main_copy">Copy</string>
+    <string name="main_copied">Copied to clipboard</string>
+    <string name="main_share_time_dial">Share time</string>
+    <string name="main_polling_rate_dial">Polling rate</string>
+    <string name="main_subs_label">subscribers</string>
+    <string name="main_time_left_label">time left</string>
+
+    <!-- Toast: tried to start GPS while system-wide location is disabled. -->
+    <string name="toast_location_disabled">Location is disabled in system settings</string>
+
+    <!-- ===== HTTP-server confirmation dialog (Server toggle pre-flight) ===== -->
+    <string name="http_dialog_title">HTTP server URL</string>
+    <string name="http_dialog_body">Your Viewer URL prefix is http://, not https://. The /identity endpoint we use to anchor server-identity verification is forgeable by anyone on the same network - verification becomes cosmetic.\n\nTo proceed anyway, we\'ll flip Settings → Advanced → \"Allow HTTP server URLs\" on for you, so this dialog doesn\'t pop up every time. Untick it later if you want it back.</string>
+    <string name="http_dialog_confirm">Allow HTTP</string>
+
+    <!-- ===== Settings screen ===== -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_server_section">Server</string>
+    <string name="settings_host_label">host</string>
+    <string name="settings_port_label">port</string>
+    <string name="settings_viewer_url_section">API address</string>
+    <string name="settings_url_prefix_label">prefix (link before #)</string>
+    <string name="settings_power_section">Power</string>
+    <string name="settings_keep_awake_title">Keep CPU awake while sharing</string>
+    <string name="settings_keep_awake_desc">Holds a partial wake lock for the duration of the connection. Pings + GPS fire on time at the cost of higher battery drain.</string>
+    <string name="settings_direction_section">Direction</string>
+    <string name="settings_compass_only_title">Use only compass for direction</string>
+    <string name="settings_compass_only_desc">When off (default): direction is inferred from motion when moving (speed > 2 km/h), last known motion-direction when stationary, compass as a final fallback. When on: always use the compass.</string>
+    <string name="settings_notifications_row_title">Notifications &amp; alerts</string>
+    <string name="settings_notifications_row_desc">Per-class push / vibration / auto-clean settings.</string>
+    <string name="settings_identity_row_title">Server identity</string>
+    <string name="settings_identity_row_desc">Ed25519 verification + auto-refresh of the server\'s long-term key.</string>
+    <string name="settings_show_advanced_title">Show advanced settings</string>
+    <string name="settings_show_advanced_desc">Power-user knobs: ping cadence, viewer debug overlay, HTTP-server allow-list.</string>
+    <string name="settings_advanced_section">Advanced</string>
+    <string name="settings_language_title">Language</string>
+    <string name="settings_language_auto">Auto (system)</string>
+    <string name="settings_allow_http_title">Allow HTTP server URLs</string>
+    <string name="settings_allow_http_desc">When off, an http:// viewer URL is blocked at connect time. Turning this on means a network MITM can forge /identity - verification becomes cosmetic.</string>
+    <string name="settings_ignore_ssl_title">Ignore SSL certificate errors</string>
+    <string name="settings_ignore_ssl_desc">Accepts any TLS cert on the /identity fetch - chain validation and hostname checks bypassed. For self-signed LAN servers. Same MITM risk as allowing HTTP: an attacker with a fake cert becomes indistinguishable from the real server.</string>
+    <string name="settings_viewer_debug_title">Append ?debug=1 to viewer URLs</string>
+    <string name="settings_viewer_debug_desc">Makes the on-screen state overlay visible in the browser. Useful in the field when devtools isn\'t reachable.</string>
+    <string name="settings_ping_interval_label">ping interval (seconds)</string>
+    <string name="settings_btn_revert">Revert</string>
+    <string name="settings_btn_reset">Reset to defaults</string>
+    <string name="settings_btn_debug_view">Debug view</string>
+    <string name="settings_btn_about">About</string>
+
+    <!-- ===== About screen ===== -->
+    <string name="about_title">About</string>
+    <string name="about_built_with_love">Built with love by DubbaThony.</string>
+    <string name="about_app_label">Share location</string>
+    <string name="about_version_label">App version</string>
+    <string name="about_version_value">%1$s (build %2$d)</string>
+    <string name="about_proto_version_label">Protocol version</string>
+    <string name="about_min_sdk_label">Minimum Android</string>
+    <string name="about_min_sdk_value">API %1$d (Android 9 Pie+)</string>
+
+    <string name="about_privacy_section">Privacy policy</string>
+    <string name="about_privacy_row_desc">Tap to read the full policy.</string>
+    <string name="privacy_last_updated">Last updated: 08.06.2026</string>
+    <string name="privacy_intro">This is a hobby / self-hostable project.\n\nThis application does not use accounts, analytics, ads, tracking, profiling, newsletters, or cookies.</string>
+    <string name="privacy_section_location_title">Location data</string>
+    <string name="privacy_section_location_body">Location sharing is end-to-end encrypted.\n\nThe server only relays encrypted data between clients. The server never receives the encryption key and cannot decrypt or inspect plaintext location data.\n\nLocation data is not saved to a database or persistent storage. Connection metadata may exist briefly in memory while the service is running.</string>
+    <string name="privacy_section_logs_title">Logs</string>
+    <string name="privacy_section_logs_body">The server, reverse proxy, hosting provider, Apache2, or similar infrastructure may create access logs.\n\nThese logs may include IP address, request time, requested URL, HTTP status code, user agent, referrer, and similar technical request data.\n\nLog retention depends on server configuration. Logs may be rotated, deleted, or stored indefinitely. If no deletion or rotation is configured, logs may remain until manually removed.\n\nThe application may also print runtime logs to the terminal, stdout, stderr, systemd journal, Docker logs, screen/tmux, or another process manager.\n\nBy default, info-level logging is used. Debug logging may be enabled by configuration.\n\nRuntime debug logs may include timestamps, ephemeral connection IDs, ephemeral share IDs or keys, internal status messages, viewer counts, errors, and connection/disconnection events.\n\nRuntime logs do not contain plaintext location data. Logged share IDs, keys, or URLs may allow access to an encrypted live stream, but decrypting that stream requires the client-side encryption key, which is not sent to the server.</string>
+    <string name="privacy_section_why_title">Why data is processed</string>
+    <string name="privacy_section_why_body">Data is processed only to provide the service, relay encrypted live updates, debug problems, prevent abuse, and keep the service secure.</string>
+    <string name="privacy_section_sharing_title">Sharing</string>
+    <string name="privacy_section_sharing_body">Data collection is minimized as much as technically practical.\n\nData is not sold, rented, or shared for marketing.\n\nData may be processed by the server operator, hosting provider, reverse proxy, logging system, or other infrastructure used to run this instance.</string>
+    <string name="privacy_section_selfhost_title">Self-hosted instances</string>
+    <string name="privacy_section_selfhost_body">This software can be self-hosted. Each instance is controlled by its own operator.\n\nThe operator of each instance is responsible for its own logging, retention, security, hosting, and legal compliance.</string>
+    <string name="privacy_section_contact_title">Contact</string>
+    <string name="privacy_section_contact_intro">For this instance, contact:</string>
+    <string name="privacy_section_contact_loading">Loading from server...</string>
+    <string name="privacy_section_contact_unavailable">Unavailable - %1$s</string>
+    <string name="privacy_contact_unset">operator has not published a contact address</string>
+
+    <string name="about_license_section">License</string>
+    <string name="about_license_intro">Released under the Beerware License (Revision 42):</string>
+    <string name="about_license_body">"THE BEERWARE LICENSE" (Revision 42):\n\nDubbaThony wrote this code. As long as you retain this notice, you can do whatever you want with this stuff. If we meet someday, and you think this stuff is worth it, you can buy me a beer in return.\n\n🍻</string>
+
+    <string name="about_libraries_section">Open-source libraries</string>
+    <string name="about_libraries_intro">This project stands on the shoulders of these excellent open-source projects:</string>
+    <string name="about_libraries_server_header">Server (Go)</string>
+    <string name="about_libraries_server_body">• caarlos0/env\n• gorilla/websocket\n• joho/godotenv\n• labstack/echo\n• rs/zerolog</string>
+    <string name="about_libraries_android_header">Android (Kotlin)</string>
+    <string name="about_libraries_android_body">• AndroidX Core / Activity / DataStore\n• Jetpack Compose (UI · Foundation · Material3)\n• Kotlinx Coroutines\n• BouncyCastle (Ed25519)</string>
+    <string name="about_libraries_web_header">Web viewer</string>
+    <string name="about_libraries_web_body">• MapLibre GL\n• PMTiles (Protomaps)\n• @noble/ciphers</string>
+    <string name="about_libraries_data_header">Map data</string>
+    <string name="about_libraries_data_body">• OpenStreetMap contributors (ODbL)\n• Protomaps tile schema</string>
+
+    <!-- ===== About screen: version-check section (Advanced only) ===== -->
+    <string name="about_version_check_section">Build fingerprint</string>
+    <string name="about_version_check_intro">Compare what this APK is against what the server publishes. Useful when self-hosting to confirm the install on this phone matches the build you packaged into the server.</string>
+    <string name="about_version_check_apk_hash_label">APK hash (SHA-512)</string>
+    <string name="about_version_check_signer_label">Signer (SHA-256)</string>
+    <string name="about_version_check_unavailable">unavailable</string>
+    <string name="about_version_check_button">Check against server</string>
+    <string name="about_version_check_button_busy">Checking...</string>
+    <string name="about_version_check_result_match">This APK matches the one offered by this server.</string>
+    <string name="about_version_check_result_signer_only">From the same publisher, but a different build than the server is offering.</string>
+    <string name="about_version_check_result_mismatch">This APK was signed by a different publisher than the server\'s.</string>
+    <string name="about_version_check_result_no_publisher_data">The server didn\'t publish a build fingerprint - nothing to compare against.</string>
+    <string name="about_version_check_result_fetch_failed">Couldn\'t reach the server: %1$s</string>
+
+    <!-- ===== Server identity screen ===== -->
+    <string name="identity_title">Server identity</string>
+    <string name="identity_verify_title">Enable server identity verification</string>
+    <string name="identity_verify_desc">Verifies the UDP handshake signature against a trusted Ed25519 key fetched over HTTPS. Turning this off makes an active MITM attacker able to read everything except the inner-encrypted GPS data.</string>
+    <string name="identity_auto_refresh_title">Auto-refresh server identity</string>
+    <string name="identity_auto_refresh_desc">On first connect to a new server, automatically fetch /identity over HTTPS. Off = the first connection refuses until you tap Refresh below. Never overwrites an existing identity on signature mismatch - that path goes through the explicit Refresh button.</string>
+    <string name="identity_refresh_mode_title">Notification on refresh</string>
+    <string name="identity_refresh_mode_desc">How to surface a server-identity refresh from the background.</string>
+    <string name="identity_refresh_mode_mute">Mute</string>
+    <string name="identity_refresh_mode_toast">Toast</string>
+    <string name="identity_refresh_mode_popup">Pop-up</string>
+    <string name="identity_server_url_section">Server URL</string>
+    <string name="identity_server_url_unset">(not configured)</string>
+    <string name="identity_stored_section">Stored identity</string>
+    <string name="identity_stored_none">(no identity stored - first connect will trigger fetch)</string>
+    <string name="identity_btn_refresh">Refresh now</string>
+    <string name="identity_btn_refreshing">Refreshing...</string>
+    <string name="identity_btn_clear">Clear</string>
+    <string name="identity_clear_dialog_title">Clear stored identity?</string>
+    <string name="identity_clear_dialog_body">Wipes the trusted Ed25519 key for %1$s. Next connect will need to re-fetch via /identity (or refuse if Auto-refresh is off).</string>
+    <string name="identity_clear_dialog_default_label">this server</string>
+    <string name="identity_refresh_toast_success">Server identity loaded: 0x%1$s...</string>
+    <string name="identity_refresh_toast_clear">Stored identity cleared</string>
+    <string name="identity_refresh_toast_http_fail">Refresh failed: %1$s</string>
+    <string name="identity_refresh_toast_bad_response">Bad response: %1$s</string>
+
+    <!-- ===== Foreground service notification ===== -->
+    <string name="service_status_sharing">sharing - connected + GPS</string>
+    <string name="service_status_connected">connected, GPS off</string>
+    <string name="service_status_gps_only">GPS on, not connected</string>
+    <string name="service_status_idle">idle</string>
+    <string name="service_action_stop_all">Stop all</string>
+
+    <!-- ===== Vibration patterns ===== -->
+    <string name="vib_none">None</string>
+    <string name="vib_short">Short</string>
+    <string name="vib_long">Long</string>
+    <string name="vib_two_short">Short ×2</string>
+    <string name="vib_two_long">Long ×2</string>
+    <string name="vib_three_short">Short ×3</string>
+
+    <!-- ===== Alert classes ===== -->
+    <string name="alert_conn_error_name">Connection error</string>
+    <string name="alert_lock_lost_name">GPS lock lost</string>
+    <string name="alert_lock_lost_title">GPS lock lost</string>
+    <string name="alert_lock_lost_detail">Signal lost - payloads paused until lock returns.</string>
+    <string name="alert_auto_stop_name">Share ended (auto-stop)</string>
+    <string name="alert_auto_stop_title">Share ended</string>
+    <string name="alert_auto_stop_detail">Share timer expired - connection stopped.</string>
+    <string name="alert_net_unstable_name">Network unstable</string>
+    <string name="alert_net_unstable_title">Network unstable</string>
+    <string name="alert_net_unstable_detail">No response from server for %1$d s - session still alive, protocol is retrying.</string>
+    <string name="alert_net_unstable_extra_label">Silence threshold</string>
+    <string name="alert_net_unstable_extra_help">Seconds without a pong before this alert fires. The session is NOT killed - the spec\'s 600 s ctrl-deadline is the only kill path.</string>
+
+    <!-- TLDR summary on the NotificationsScreen row. tldr_on_template is a
+         3-part format string: %1$s = vibration label, %2$s = push/silent. -->
+    <string name="tldr_off">Off</string>
+    <string name="tldr_push">push</string>
+    <string name="tldr_silent">silent</string>
+    <string name="tldr_on_template">On · %1$s · %2$s</string>
+
+    <!-- ===== Notifications list screen ===== -->
+    <string name="notifications_title">Notifications &amp; alerts</string>
+
+    <!-- ===== Alert-edit screen ===== -->
+    <string name="alert_edit_enabled_title">Enabled</string>
+    <string name="alert_edit_enabled_desc">Master switch. When off, this alert never fires.</string>
+    <string name="alert_edit_push_title">Push notification</string>
+    <string name="alert_edit_push_desc">Heads-up system notification. Off = vibration only (if a pattern is picked).</string>
+    <string name="alert_edit_vibration_label">Vibration</string>
+    <string name="alert_edit_vibration_picker_title">Vibration pattern</string>
+    <string name="alert_edit_auto_cancel_title">Auto-clean when resolved</string>
+    <string name="alert_edit_auto_cancel_desc">Clears the system notification when the triggering condition goes away (lock returns, pong returns, new session starts, user dismisses dialog, ...).</string>
+    <string name="alert_edit_int_seconds_label">seconds (%1$d..%2$d)</string>
+
+    <!-- ===== Debug screen ===== -->
+    <string name="debug_title">Debug</string>
+    <string name="debug_log_section">Log</string>
+    <string name="debug_btn_clear">Clear log</string>
+    <string name="debug_btn_export">Export</string>
+    <string name="debug_btn_share">Share</string>
+    <string name="debug_empty">(no log entries yet)</string>
+
+    <!-- ===== Main screen extras ===== -->
+    <string name="main_status_idle">idle</string>
+    <string name="main_status_dialing">dialing...</string>
+    <string name="main_status_ready">ready</string>
+    <string name="main_status_active">active</string>
+    <string name="main_picker_share_time">Share time</string>
+    <string name="main_picker_polling_rate">Polling rate</string>
+    <string name="main_no_link">(no link - start a session)</string>
+    <string name="main_dial_label_share_time">share time</string>
+    <string name="main_dial_label_polling_rate">polling rate (upd/s)</string>
+    <string name="main_label_current_link">current link:</string>
+    <string name="main_value_link_unavailable">n/a</string>
+    <string name="main_label_stream_consumers">stream consumer cnt:</string>
+    <string name="main_label_time_left">time left:</string>
+
+    <!-- Time-left formatting (count-down for share-time). %1$d = minutes, %2$02d = seconds. -->
+    <string name="main_time_left_format">%1$d:%2$02d</string>
+
+    <!-- ===== Driver errors (UiError) ===== -->
+    <string name="err_no_response_title">Server didn\'t respond</string>
+    <string name="err_no_response_detail">%1$s:%2$d - UDP packet sent, no reply within %3$d s. Check that the server is running and that the host/port are correct in Settings.</string>
+    <string name="err_unexpected_response_title">Unexpected server response</string>
+    <string name="err_unexpected_response_detail">Got frame type %1$d where HandshakeServer was expected. Possibly talking to the wrong service on %2$s:%3$d.</string>
+    <string name="err_malformed_response_title">Server response malformed</string>
+    <string name="err_malformed_response_detail">Got a HandshakeServer frame but couldn\'t parse it. Likely a protocol-version mismatch or the wrong server on this port.</string>
+    <string name="err_proto_too_high_title">App is newer than the server</string>
+    <string name="err_proto_too_high_detail">The server at %1$s runs an older protocol than this app speaks. The matching older APK is most likely hosted on that same server - the Viewer URL tells you where to look.\n\nHeads up: installing the older APK will probably require uninstalling this one first. Different builds (and different self-hosters) sign with different keys, and Android refuses cross-key replacements.</string>
+    <string name="err_proto_too_low_title">App is older than the server</string>
+    <string name="err_proto_too_low_detail">The server at %1$s expects a newer protocol than this app speaks. The newer APK that matches is hosted on that same server.\n\nHeads up: if the newer APK is signed differently from this install (different self-hoster, or rebuilt with a fresh key), Android will refuse to upgrade over the existing app - uninstall first.</string>
+    <string name="err_proto_download_label_old">Download matching APK</string>
+    <string name="err_proto_download_label_new">Download newer APK</string>
+    <string name="err_server_refused_title">Server refused handshake</string>
+    <string name="err_server_refused_detail">Status code %1$d. No graceful recovery - try again, then check the server log.</string>
+    <string name="err_identity_check_failed_title">Server identity check failed</string>
+    <string name="err_identity_check_failed_detail">The UDP handshake signature didn\'t match the trusted Ed25519 key for %1$s. Auto-refresh either failed or is disabled, so we can\'t tell whether this is a legitimate key rotation or a man-in-the-middle. Open Settings → Server identity, tap Refresh, and verify the new fingerprint out-of-band before reconnecting.</string>
+    <string name="err_identity_mitm_title">Server identity check failed (UDP MITM detected)</string>
+    <string name="err_identity_mitm_detail">HTTPS confirmed the server\'s identity is unchanged, but the UDP handshake signature doesn\'t verify against it. Something is actively forging UDP traffic between this device and %1$s. The HTTPS channel appears intact - do not reconnect from this network.</string>
+    <string name="err_identity_critical_title">Server identity check failed (critical)</string>
+    <string name="err_identity_critical_detail">Re-fetched the identity over HTTPS and got a DIFFERENT key, but the UDP handshake doesn\'t verify against it either. Either the server is misconfigured, or both the HTTPS and UDP channels are being intercepted. Do not reconnect.</string>
+    <string name="err_invalid_port_title">Invalid port</string>
+    <string name="err_invalid_port_detail">Tried to connect with port %1$d - not a valid network port. Open Settings, set Server port to a value between 1 and 65535.</string>
+    <string name="err_invalid_host_title">Invalid host</string>
+    <string name="err_invalid_host_detail">Server host is empty. Open Settings and set the server hostname or IP.</string>
+    <string name="err_invalid_connection_settings_title">Invalid connection settings</string>
+    <string name="err_invalid_connection_settings_detail">host=%1$s, port=%2$d, pingMs=%3$d\n\nOpen Settings, make sure host is a hostname/IP and port is 1-65535.</string>
+    <string name="err_invalid_connection_settings_host_empty">(empty)</string>
+
+    <!-- ===== Identity-resolution errors ===== -->
+    <string name="err_identity_not_stored_title">Server identity not stored</string>
+    <string name="err_identity_not_stored_detail">No trusted Ed25519 key cached for %1$s, and Auto-refresh is off. Open Settings → Server identity and tap Refresh, then reconnect.</string>
+    <string name="err_identity_cant_fetch_title">Cannot fetch server identity</string>
+    <string name="err_identity_cant_fetch_detail">No Viewer URL prefix configured to fetch /identity from. Open Settings, set the Viewer URL prefix (e.g. http://%1$s:8049/), and try again.</string>
+    <string name="err_identity_fetch_failed_title">Couldn\'t fetch server identity</string>
+    <string name="err_identity_fetch_failed_detail">Tried to GET %1$s but: %2$s\n\nServer identity verification is required before any UDP traffic.</string>
+    <string name="err_identity_bad_response_title">Server identity response invalid</string>
+    <string name="err_identity_bad_response_detail">Fetched %1$s but: %2$s</string>
+
+    <!-- ===== IdentityFetcher inner-message strings ===== -->
+    <!-- These get spliced into err_identity_fetch_failed_detail /
+         err_identity_bad_response_detail via the %2$s format argument; they
+         describe the specific reason the /identity GET failed. -->
+    <string name="ident_fetch_url_blank">URL prefix not configured in Settings</string>
+    <string name="ident_fetch_url_unparseable">URL prefix is not parseable</string>
+    <string name="ident_fetch_connect_failed">connect failed: %1$s</string>
+    <string name="ident_fetch_http_status">HTTP %1$d from %2$s</string>
+    <string name="ident_fetch_read_failed">read failed: %1$s</string>
+    <string name="ident_fetch_not_json">response is not JSON: %1$s</string>
+    <string name="ident_fetch_status_false">server reported status=false</string>
+    <string name="ident_fetch_missing_result">response is missing \'result\' field</string>
+    <string name="ident_fetch_bad_hex_length">expected 64-hex-char pubkey, got %1$d chars</string>
+    <string name="ident_fetch_non_hex">non-hex character in \'result\'</string>
+
+    <!-- ===== Identity refresh notification (POPUP mode) ===== -->
+    <string name="identity_refresh_notif_title">Server identity loaded</string>
+    <string name="identity_refresh_notif_content">Fingerprint 0x%1$s...</string>
+    <string name="identity_refresh_notif_full">Full key: 0x%1$s</string>
+
+    <!-- ===== Mid-handshake / runtime driver errors ===== -->
+    <string name="err_midhandshake_quiet_title">Server stopped responding mid-handshake</string>
+    <string name="err_midhandshake_quiet_detail">Got past the first handshake step, then the server went quiet. Likely lost the UDP path or the server crashed after the first reply.</string>
+    <string name="err_unexpected_response_encrypted_detail">Got frame type %1$d where EncryptedHandshakeServer was expected.</string>
+    <string name="err_crypto_handshake_title">Crypto handshake failed</string>
+    <string name="err_crypto_handshake_detail">Couldn\'t decrypt the server\'s reply - ECDH derived a different key on each side. Usually means a protocol version mismatch.</string>
+    <string name="err_ctrl_timed_out_title">Control frame timed out</string>
+    <string name="err_ctrl_timed_out_detail">The server didn\'t acknowledge a control frame within %1$d s. Per protocol the connection is deemed dead. Toggle Server off then on to mint a fresh session.</string>
+    <string name="err_port_unreachable_title">Server port unreachable</string>
+    <string name="err_port_unreachable_detail">ICMP port-unreachable from %1$s:%2$d. Either the server isn\'t listening, or it restarted and lost our session. Toggle Server off then on to make a fresh one.</string>
+    <string name="err_network_title">Network error</string>
+    <string name="err_network_detail">%1$s: %2$s\n\nMost often: bad hostname (DNS), no network connectivity, or a firewall blocking UDP %3$d. Check Settings → Server host / port.</string>
+    <string name="err_network_no_detail">no detail</string>
+
+    <string name="alert_lock_lost_detail_system_off">Location was turned off in system settings.</string>
+
+    <!-- Foreground service notification title + action button label -->
+    <string name="service_notif_title">Share location</string>
+    <string name="service_notif_action_stop">Stop</string>
+
+    <!-- ===== Server-initiated ctrl exits ===== -->
+    <string name="err_server_bye_title">Server said goodbye</string>
+    <string name="err_server_bye_detail">The server gracefully ended this session.</string>
+    <string name="err_server_fatal_title">Server fatal error</string>
+    <string name="err_server_fatal_detail">The server dropped the connection with a fatal error (no message provided). Toggle Server off then on to retry.</string>
+    <string name="err_server_fatal_msg_detail">Server message: %1$s</string>
+    <string name="err_server_fatal_msg_unreadable">(unreadable)</string>
+    <string name="err_server_shutting_down_title">Server is shutting down</string>
+    <string name="err_server_shutting_down_detail">The server announced a clean shutdown. Try again when it\'s back.</string>
+
+</resources>

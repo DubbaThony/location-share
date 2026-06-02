@@ -1,0 +1,91 @@
+{
+  "abstractFrame": [
+    {
+      "bodyHex": "deadbeef",
+      "connIdHex": "0102030405060708",
+      "expectedHex": "080706050403020106deadbeef511b63b8",
+      "frameType": 6
+    },
+    {
+      "bodyHex": "",
+      "connIdHex": "0000000000000000",
+      "expectedHex": "000000000000000001326f1432",
+      "frameType": 1
+    },
+    {
+      "bodyHex": "000102030405",
+      "connIdHex": "ffffffffffffffff",
+      "expectedHex": "ffffffffffffffff07000102030405a1d22fc9",
+      "frameType": 7
+    }
+  ],
+  "ecdh": [
+    {
+      "clientConnIdHex": "2222222222222222",
+      "clientPubHex": "04d65a93977caa3d1b081852ff57a79e465f1660577304baead505dd3a48589cf350185e895372df6221ea3a137557e473fddb6755f05bd507c3c533fce9c91285",
+      "clientScalarHex": "2222222222222222222222222222222222222222222222222222222222222222",
+      "k1Hex": "793d3dc5c88864de252a1fd274d090df06ac01d88a2c295000277eef78c00a2c",
+      "k2Hex": "aacbbd95c43d294357ae742a0973508324c6a7649e0e000a063ca077b862ac2c",
+      "serverConnIdHex": "1111111111111111",
+      "serverPubHex": "040217e617f0b6443928278f96999e69a23a4f2c152bdf6d6cdf66e5b80282d4ed194a7debcb97712d2dda3ca85aa8765a56f45fc758599652f2897c65306e5794",
+      "serverScalarHex": "1111111111111111111111111111111111111111111111111111111111111111",
+      "sharedHex": "ccfc261f58193c98ca4ad4a53bbac6f0ee29bc4d48438090446908622ca79af6"
+    }
+  ],
+  "encrypted": {
+    "ctrl": {
+      "counter": 4,
+      "ctrlNonce": 4660,
+      "ctrlType": 255,
+      "expectedHex": "00000007040000000000000081cf14d87b73ffc1a01b3ce901ed81e53d72471523",
+      "extraHex": ""
+    },
+    "data": {
+      "counter": 3,
+      "dataHex": "010203",
+      "expectedHex": "000000060300000000000000ccaac75bea135e26c94099e390bd2097ab19012408"
+    },
+    "encryptedHandshakeClient": {
+      "counter": 0,
+      "expectedHex": "000000030000000000000000bfa6159c13cfc198377b2d4179f5c6f78b152d62",
+      "featFlag": 1
+    },
+    "encryptedHandshakeServer": {
+      "aliasHex": "6162636465666768696a6b6c6d6e6f707172737475767778797a303132333435",
+      "counter": 1,
+      "expectedHex": "0000000401000000000000007173432728c6f0f68e4baf25949cb12574204634389caa0e601eb3853b2dcc904047827c51f8dc7e4b3c409b468c93c5fec33b2d",
+      "featFlag": 1
+    },
+    "ping": {
+      "counter": 2,
+      "expectedHex": "0000000502000000000000006c2210a76f2bb2bcdc11e5e32cb5feb87b75",
+      "nonce": 48879
+    }
+  },
+  "handshakeClient": [
+    {
+      "ecdhHex": "04000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+      "expectedHex": "04000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f01",
+      "protoVersion": 1
+    }
+  ],
+  "handshakeServer": [
+    {
+      "connectionIdHex": "1122334455667788",
+      "ecdhHex": "04000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f",
+      "expectedHex": "04000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebf008877665544332211",
+      "signatureHex": "808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebf",
+      "status": 0
+    }
+  ],
+  "kdf": [
+    {
+      "clientConnIdHex": "2222222222222222",
+      "k1Hex": "856e4bd2b2408daeb483f33f29a85eca466503bc03ac028d7fb4daf5038d5d6c",
+      "k2Hex": "ecb072752d3700e4e813f81aee1174c4ca1729f398ba6c8e8a01705e2e77e0a5",
+      "serverConnIdHex": "1111111111111111",
+      "sharedSecretHex": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    }
+  ],
+  "keyHex": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f"
+}

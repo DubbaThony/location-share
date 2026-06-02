@@ -1,0 +1,375 @@
+/* Landing-side pages (index, privacy, cookies, how-it-works).
+ *
+ * Aesthetic: skeuomorphic industrial control panel - brushed-metal panels,
+ * recessed bezels, green LED indicators on the spec list, big tactile
+ * push-button for the APK download. Dark by default (the same vibe the
+ * viewer adopts in dark mode); deliberately doesn't follow the OS theme
+ * because the landing IS the chrome.
+ *
+ * No web fonts, no third-party CSS - we eat our own "ZERO third-party
+ * dependencies" dogfood. System fonts only.
+ */
+
+:root {
+    --metal:        #2a2c30;   /* panel base */
+    --metal-light:  #3c3f44;   /* panel highlight */
+    --metal-dark:   #1a1c1f;   /* panel shadow / recess */
+    --bezel:        #4a4d52;   /* border / divider */
+    --bezel-bright: #6a6d72;   /* highlighted edge */
+    --label:        #d2cdb8;   /* primary text - warm off-white */
+    --label-muted:  #98968a;   /* secondary text */
+    --led-ok:       #18b414;
+    --led-glow:     rgba(24, 180, 20, 0.55);
+    --amber:        #f5b400;
+    --rivet:        radial-gradient(circle at 30% 30%, #8a8d92, #2c2e32 70%, #1a1c1f 100%);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--metal);
+    color: var(--label);
+    font-family: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* The header is the nameplate - engraved into the chassis above the
+ * panels. Stencil-ish caps with letter-tracking for an industrial feel,
+ * no custom font needed. */
+.nameplate {
+    text-align: center;
+    padding: 36px 16px 28px;
+    border-bottom: 2px solid var(--metal-dark);
+    background: linear-gradient(180deg, var(--metal-light) 0%, var(--metal) 100%);
+    box-shadow: inset 0 -2px 0 var(--metal-dark);
+    position: relative;
+}
+.nameplate h1 {
+    font-size: 44px;
+    letter-spacing: 0.22em;
+    margin: 0;
+    font-weight: 800;
+    text-transform: uppercase;
+    text-shadow:
+        0 1px 0 var(--metal-dark),
+        0 2px 4px rgba(0, 0, 0, 0.6),
+        0 -1px 0 rgba(255, 255, 255, 0.05);
+}
+.nameplate .tagline {
+    margin: 10px 0 0;
+    color: var(--label-muted);
+    font-size: 15px;
+    letter-spacing: 0.08em;
+}
+.nameplate .breadcrumb {
+    margin: 8px 0 0;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--amber);
+    text-transform: uppercase;
+}
+.nameplate .breadcrumb a {
+    color: var(--label-muted);
+    text-decoration: none;
+}
+.nameplate .breadcrumb a:hover { color: var(--amber); }
+
+/* The main two-column layout on the index page: specs panel on the left,
+ * screenshots panel on the right. No outer max-width - the panels fill
+ * the viewport with generous side padding, so the screenshots in the
+ * right panel can actually be seen at a useful size on big monitors.
+ * Ratio tilted toward the right panel so the PC screenshot gets the
+ * room it deserves; the spec column is text-bound and doesn't need it. */
+.bench {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: 32px;
+    padding: 32px clamp(24px, 4vw, 80px);
+}
+
+/* Single-column variant used by privacy/cookies/how-it-works pages.
+ * Prose stays capped - long lines of body text are hard to read past
+ * ~75 characters per line, so we keep a sensible reading measure
+ * regardless of viewport width. */
+.bench-single {
+    display: block;
+    padding: 32px clamp(24px, 4vw, 80px);
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+/* The panel - brushed-metal box with recessed inner edges. The two
+ * pseudo-elements paint phillips-head rivets at the top corners; combined
+ * with the gradient + double-inset shadow you get the "machined enclosure
+ * with screwed-on faceplate" read. */
+.panel {
+    background: linear-gradient(160deg, var(--metal-light), var(--metal) 50%, var(--metal-dark) 100%);
+    border: 1px solid var(--bezel);
+    border-radius: 6px;
+    padding: 28px 26px 22px;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+        0 4px 16px rgba(0, 0, 0, 0.45);
+    position: relative;
+}
+.panel::before,
+.panel::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--rivet);
+    border-radius: 50%;
+    box-shadow:
+        inset 0 -1px 1px rgba(0, 0, 0, 0.7),
+        0 1px 1px rgba(255, 255, 255, 0.05);
+}
+.panel::before { top: 8px; left: 8px; }
+.panel::after  { top: 8px; right: 8px; }
+
+.panel-label {
+    margin: 0 0 18px;
+    font-size: 13px;
+    letter-spacing: 0.32em;
+    color: var(--label-muted);
+    text-transform: uppercase;
+    font-weight: 700;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--bezel);
+}
+
+/* Spec list - each row is a panel-mounted indicator with its label.
+ * Monospace so the LEDs align cleanly in a vertical column. */
+.spec-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+}
+.spec-list li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 6px 0;
+    font-size: 16px;
+    line-height: 1.3;
+}
+.led-dot {
+    flex: 0 0 auto;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #5dee5a, var(--led-ok) 60%, #0a6a08 100%);
+    box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.6),
+        0 0 10px var(--led-glow),
+        inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+.spec-list sup {
+    color: var(--amber);
+    font-weight: 700;
+    margin-left: 2px;
+}
+
+/* Footnotes - engraved-style, smaller, set apart by a dashed rule. */
+.footnotes {
+    margin-top: 22px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--bezel);
+    font-size: 12px;
+    color: var(--label-muted);
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    line-height: 1.5;
+}
+.footnotes p { margin: 4px 0; }
+.footnotes sup { color: var(--amber); font-weight: 700; }
+
+/* Rotating one-liner under the spec sheet - italic, muted text fades
+ * softly between values. The dashed divider is owned by the outer
+ * .tagline-frame so it stays put while the inner text opacity-cycles;
+ * otherwise the divider blinked along with the text and looked broken.
+ * min-height locks the row so layout doesn't twitch between rotations. */
+.tagline-frame {
+    margin: 18px 0 0;
+    padding-top: 14px;
+    border-top: 1px dashed var(--bezel);
+}
+.tagline-rotator {
+    margin: 0;
+    text-align: center;
+    font-style: italic;
+    color: var(--label-muted);
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 2.1em;
+    transition: opacity 400ms ease;
+}
+
+/* The display panel - the two screenshots sit in a stacked layout that
+ * mimics a desktop monitor + a phone next to it (per the sketch). */
+.display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+}
+.screen {
+    background: #000;
+    padding: 5px;
+    border-radius: 8px;
+    border: 1px solid var(--bezel);
+    box-shadow:
+        inset 0 0 0 1px rgba(0, 0, 0, 0.4),
+        0 6px 18px rgba(0, 0, 0, 0.55);
+}
+.screen img {
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+}
+/* PC screenshot scales to fill the panel. Phone is set in vw so it
+ * grows with the viewport (caps at sensible bounds so it doesn't dwarf
+ * the PC on narrow screens or become absurd on ultrawides). */
+.screen-pc    { width: 100%; }
+.screen-phone {
+    width: clamp(220px, 18vw, 360px);
+    align-self: flex-end;
+    margin-top: -60px;
+    margin-right: 24px;
+}
+
+/* The download button - the centerpiece. Big yellow-green industrial
+ * push-button with a 3D edge that depresses on :active. */
+.action {
+    display: flex;
+    justify-content: center;
+    padding: 16px 16px 36px;
+}
+.apk-button {
+    background: linear-gradient(180deg, #c9e234 0%, #a3b800 70%, #8da000 100%);
+    color: #1a1c0a;
+    border: 2px solid #6b7a00;
+    padding: 20px 40px;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-decoration: none;
+    border-radius: 8px;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow:
+        inset 0 2px 0 rgba(255, 255, 255, 0.45),
+        inset 0 -3px 0 rgba(0, 0, 0, 0.2),
+        0 5px 0 #4d5800,
+        0 8px 16px rgba(0, 0, 0, 0.55);
+    transition: transform 60ms, box-shadow 60ms;
+}
+.apk-button:hover { filter: brightness(1.05); }
+.apk-button:active {
+    transform: translateY(4px);
+    box-shadow:
+        inset 0 2px 0 rgba(255, 255, 255, 0.45),
+        inset 0 -3px 0 rgba(0, 0, 0, 0.2),
+        0 1px 0 #4d5800,
+        0 2px 4px rgba(0, 0, 0, 0.55);
+}
+.apk-button .arrow {
+    font-size: 30px;
+    line-height: 1;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+/* Footer nav - three labels styled as small backlit indicators rather
+ * than typical underlined hyperlinks. */
+.nav {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    padding: 22px 16px 36px;
+    border-top: 1px solid var(--metal-dark);
+    flex-wrap: wrap;
+}
+.nav a {
+    color: var(--label);
+    text-decoration: none;
+    padding: 10px 22px;
+    background: linear-gradient(180deg, var(--metal-light), var(--metal-dark));
+    border: 1px solid var(--bezel);
+    border-radius: 4px;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.4),
+        0 2px 4px rgba(0, 0, 0, 0.4);
+    transition: filter 100ms, transform 60ms;
+}
+.nav a:hover { filter: brightness(1.2); }
+.nav a:active { transform: translateY(1px); }
+
+/* Prose pages (privacy / cookies / how-it-works) - one big readable
+ * panel with classic prose styling inside. */
+.prose {
+    line-height: 1.65;
+    font-size: 16px;
+}
+.prose h2 {
+    font-size: 22px;
+    margin: 28px 0 10px;
+    letter-spacing: 0.06em;
+    color: var(--label);
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--bezel);
+}
+.prose h3 {
+    font-size: 17px;
+    margin: 22px 0 8px;
+    color: var(--label);
+    letter-spacing: 0.04em;
+}
+.prose p { margin: 0 0 14px; }
+.prose ul, .prose ol { margin: 8px 0 16px; padding-left: 22px; }
+.prose li { margin: 4px 0; }
+.prose code {
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 14px;
+    background: var(--metal-dark);
+    border: 1px solid var(--bezel);
+    border-radius: 3px;
+    padding: 1px 6px;
+}
+.prose pre {
+    font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+    background: var(--metal-dark);
+    border: 1px solid var(--bezel);
+    border-radius: 4px;
+    padding: 12px 14px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--label);
+}
+.prose a { color: var(--amber); }
+.prose strong { color: var(--label); }
+
+@media (max-width: 800px) {
+    .bench { grid-template-columns: 1fr; padding: 18px; }
+    .nameplate h1 { font-size: 30px; letter-spacing: 0.18em; }
+    .nameplate .tagline { font-size: 13px; }
+    .panel { padding: 22px 18px 18px; }
+    .spec-list li { font-size: 14px; }
+    .screen-phone { margin: 8px 0 0; align-self: center; }
+    .nav { gap: 10px; padding: 18px 12px 24px; }
+    .nav a { padding: 8px 16px; font-size: 12px; }
+    .apk-button { padding: 16px 28px; font-size: 18px; gap: 12px; }
+}

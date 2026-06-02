@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy policy - Share location</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet" href="/static/landing.css">
+</head>
+<body>
+
+    <header class="nameplate">
+        <h1>Privacy Policy</h1>
+        <p class="breadcrumb"><a href="/">← Back to main</a></p>
+    </header>
+
+    <main class="bench-single">
+        <section class="panel prose">
+            <p>Last updated: 08.06.2026</p>
+            <p>This is a hobby/self-hostable project.</p>
+            <p>This application does not use accounts, analytics, ads, tracking, profiling, newsletters, or cookies.</p>
+
+            <h2>Location data</h2>
+            <p>Location sharing is end-to-end encrypted.</p>
+            <p>The server only relays encrypted data between clients. The server never receives the encryption key and cannot decrypt or inspect plaintext location data.</p>
+            <p>Location data is not saved to a database or persistent storage. Connection metadata may exist briefly in memory while the service is running.</p>
+
+            <h2>Logs</h2>
+            <p>The server, reverse proxy, hosting provider, Apache2, or similar infrastructure may create access logs.</p>
+            <p>These logs may include IP address, request time, requested URL, HTTP status code, user agent, referrer, and similar technical request data.</p>
+            <p>Log retention depends on server configuration. Logs may be rotated, deleted, or stored indefinitely. If no deletion or rotation is configured, logs may remain until manually removed.</p>
+            <p>The application may also print runtime logs to the terminal, stdout, stderr, systemd journal, Docker logs, screen/tmux, or another process manager.</p>
+            <p>By default, info-level logging is used. Debug logging may be enabled by configuration.</p>
+            <p>Runtime debug logs may include timestamps, ephemeral connection IDs, ephemeral share IDs or keys, internal status messages, viewer counts, errors, and connection/disconnection events.</p>
+            <p>Runtime logs do not contain plaintext location data. Logged share IDs, keys, or URLs may allow access to an encrypted live stream, but decrypting that stream requires the client-side encryption key, which is not sent to the server.</p>
+
+            <h2>Why data is processed</h2>
+            <p>Data is processed only to provide the service, relay encrypted live updates, debug problems, prevent abuse, and keep the service secure.</p>
+
+            <h2>Sharing</h2>
+            <p>Data collection is minimized as much as technically practical.</p>
+            <p>Data is not sold, rented, or shared for marketing.</p>
+            <p>Data may be processed by the server operator, hosting provider, reverse proxy, logging system, or other infrastructure used to run this instance.</p>
+
+            <h2>Self-hosted instances</h2>
+            <p>This software can be self-hosted. Each instance is controlled by its own operator.</p>
+            <p>The operator of each instance is responsible for its own logging, retention, security, hosting, and legal compliance.</p>
+
+            <h2>Contact</h2>
+            <p>For this instance, contact: <span id="operator-contact" data-state="loading">loading from server...</span></p>
+        </section>
+    </main>
+
+    <footer class="nav">
+        <a href="/">Home</a>
+        <a href="/static/cookies.html">Cookie policy</a>
+        <a href="/static/how-it-works.html">See how it works</a>
+        <a href="https://github.com/DubbaThony/location-share" target="_blank" rel="noopener noreferrer">Source code</a>
+    </footer>
+
+    <!-- Operator contact is published by the running server, not baked into
+         the static HTML, so self-hosters don't ship the upstream maintainer's
+         email and the upstream APK doesn't have to expose anyone's contact
+         by default. Endpoint shape: BasicResponse[string] at /gpdr-email -
+         { "status": true, "result": "<email>" }. Empty-string result is
+         treated the same as a fetch failure: operator hasn't configured
+         the address, surface "(unavailable)" rather than a broken mailto. -->
+    <script>
+    (function () {
+        var el = document.getElementById('operator-contact');
+        if (!el) return;
+        function setUnavailable(msg) {
+            el.setAttribute('data-state', 'unavailable');
+            el.textContent = msg;
+        }
+        function setLoaded(addr) {
+            el.setAttribute('data-state', 'loaded');
+            el.innerHTML = '';
+            var a = document.createElement('a');
+            a.href = 'mailto:' + addr;
+            a.textContent = addr;
+            el.appendChild(a);
+        }
+        fetch('/gpdr-email', { headers: { 'Accept': 'application/json' } })
+            .then(function (r) {
+                if (!r.ok) throw new Error('HTTP ' + r.status);
+                return r.json();
+            })
+            .then(function (body) {
+                if (!body || body.status !== true) {
+                    throw new Error(body && body.error ? body.error : 'server returned status=false');
+                }
+                var addr = (body.result || '').trim();
+                if (!addr) {
+                    setUnavailable('(operator has not published a contact address)');
+                    return;
+                }
+                setLoaded(addr);
+            })
+            .catch(function (err) {
+                setUnavailable('(unavailable - ' + (err && err.message ? err.message : 'fetch failed') + ')');
+            });
+    })();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share location</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="apple-touch-icon" href="/static/favicon.png">
+    <link rel="stylesheet" href="/static/landing.css">
+</head>
+<body>
+
+    <header class="nameplate">
+        <h1>Share Location</h1>
+        <p class="tagline">On-demand E2EE location sharing. Self-hosted. No middleman.</p>
+    </header>
+
+    <main class="bench">
+        <!-- LEFT: spec sheet - every row is a green LED indicator next to a
+             one-line property. Reads like the front panel of a server: green
+             across the board means everything we promise is true. -->
+        <section class="panel specs">
+            <h2 class="panel-label">Specifications</h2>
+            <ul class="spec-list">
+                <li><span class="led-dot"></span>Self-host encouraged</li>
+                <li><span class="led-dot"></span>ZERO persistence<sup>*</sup></li>
+                <li><span class="led-dot"></span>ZERO cookies</li>
+                <li><span class="led-dot"></span>ZERO accounts</li>
+                <li><span class="led-dot"></span>ZERO gApps dependencies</li>
+                <li><span class="led-dot"></span>ZERO third-party calls</li>
+                <li><span class="led-dot"></span>ZERO analytics</li>
+                <li><span class="led-dot"></span>ZERO fingerprinting</li>
+                <li><span class="led-dot"></span>ZERO dollars fee<sup>***</sup></li>
+                <li><span class="led-dot"></span>ZERO ads</li>
+                <li><span class="led-dot"></span>Privacy-first</li>
+                <li><span class="led-dot"></span>Location data fully E2EE</li>
+                <li><span class="led-dot"></span>Standard crypto · P-256 · AES-256-GCM · Ed25519</li>
+                <li><span class="led-dot"></span>Resilient UDP connection</li>
+                <li><span class="led-dot"></span>Local sovereign maps<sup>**</sup></li>
+                <li><span class="led-dot"></span>Rotated keys per share</li>
+            </ul>
+            <div class="footnotes">
+                <p><sup>*</sup> Depending on configuration, the reverse proxy probably runs access logs. Harmless for your privacy.</p>
+                <p><sup>**</sup> Maps are sovereign after downloading them. Downloader included.</p>
+                <p><sup>***</sup> You probably still will pay for your server.</p>
+            </div>
+            <!-- Rotating one-liner - pure-JS sass below the spec sheet.
+                 The frame wrapper owns the dashed divider so only the
+                 inner text fades on rotation (otherwise the divider
+                 blinked too - looked broken). Initial text seeds the
+                 first frame so there's no empty-paragraph flash on cold
+                 load. Actual rotation lives in the inline script at the
+                 end of <body>. -->
+            <div class="tagline-frame">
+                <p class="tagline-rotator" id="tagline-rotator">Phone home? Wouldn't know its number.</p>
+            </div>
+        </section>
+
+        <!-- RIGHT: real screenshots of the viewer + sender. Phone tucked
+             behind/under the desktop monitor per the sketch. -->
+        <section class="panel display">
+            <h2 class="panel-label">In Action</h2>
+            <div class="screen screen-pc">
+                <img src="/static/screenshot_pc.png" alt="Browser viewer showing live position on a self-hosted map">
+            </div>
+            <div class="screen screen-phone">
+                <img src="/static/screenshot_phone.png" alt="Android sender app showing the same position">
+            </div>
+        </section>
+    </main>
+
+    <section class="action">
+        <a class="apk-button" href="/static/pl.dubba.share.apk" download>
+            <span class="arrow">▼</span>
+            <span class="label">Get .APK</span>
+        </a>
+    </section>
+
+    <footer class="nav">
+        <a href="/static/privacy.html">Privacy policy</a>
+        <a href="/static/cookies.html">Cookie policy</a>
+        <a href="/static/how-it-works.html">See how it works</a>
+        <a href="https://github.com/DubbaThony/location-share" target="_blank" rel="noopener noreferrer">Source code</a>
+    </footer>
+
+    <!-- Pure-JS tagline rotator. Sequential, fades on swap. Self-contained
+         IIFE - no globals leaked. Pause-on-hover so the user can read the
+         current line if they want to. -->
+    <script>
+    (function () {
+        const taglines = [
+            "Phone home? Wouldn't know its number.",
+            "Engineered with love, not with an accountant.",
+            "Won't ask for your birthday for \"security reasons.\"",
+            "Will never IPO.",
+            "Your location stays your location.",
+            "No \"we've updated our privacy policy\" emails - I don't even have your email address.",
+            "Self-hosting is the feature.",
+            "Doesn't sell your data - there's nothing to sell.",
+            "Enshittification-proof.",
+            "Won't mind handing everything I have to the FBI. I have nothing.",
+            "Fresh out of the oven - grab it while it's warm.",
+            "No quarterly earnings call to justify dark patterns.",
+            "Won't pivot to advertising next year.",
+            "Your data isn't \"monetized\" - it isn't even stored.",
+            "No \"enhanced experience\" that's worse than the previous one.",
+            "Same five buttons since version 0.1.",
+            "The map server fits on a USB stick.",
+            "Built in Go. Compiled. Deployed. Forgotten.",
+            "Server-side amnesia included.",
+            "You own the relay. I don't run anything.",
+            "Your VPS, your rules, your retention policy.",
+            "The \"cloud\" is a Raspberry Pi in your closet.",
+            "No streak to maintain. No badge to earn.",
+            "Refuses to be a \"platform.\"",
+            "Does one thing. Stops doing it when you say so.",
+            "On-demand means on-demand.",
+            "The status bar tells you everything. There is no second screen.",
+            "No account required. No account possible.",
+            "Password reset is hard when there are no passwords.",
+            "VC-resistant by architecture.",
+            "Retention strategy: java.lang.NullPointerException",
+            "Tracking app that refuses to track you. Shocking.",
+            "The relay knows less than your router.",
+            "GDPR: we have nothing to give back.",
+            "Analytics department was thrown into /dev/null.",
+            "Your data broker's worst nightmare.",
+            "Your map doesn't need seven trackers to render a road.",
+            "Cloud-native, if your cloud has blinking LEDs.",
+            "Clone it, build it, SCP it like it's 2009.",
+            "Premium tier: `git clone`.",
+            "Free as in freedom, beer, AND not for acquisition.",
+            "Audit log: cat ate it. Pre-commit.",
+            "Disaster recovery: Did you try to start it again?",
+            "Won't become a social network by accident.",
+            "Temporary coordinates, permanent skepticism.",
+            "Database schema: dotenv file with 7 entries.",
+            "Vendor lock-in requires a vendor.",
+            "Doesn't scale? Good.",
+            "Want my database? Feel free to search. Good luck.",
+            "Observability stack: Is UDP port open?",
+            "Movement data is radioactive. Get off my lawn!",
+            "Exit strategy: Ctrl+C.",
+            "Wireshark it. Have fun.",
+            "Your ISP learns more than my relay does.",
+            "Because \"trust me bro\" aged poorly.",
+            "Login? In this economy?",
+            "Powered by UDP, paranoia and severe distrust.",
+            "VCs hate this one weird binary.",
+            "SLA terms: don't unplug the Pi.",
+            "Status page: ssh into your VPS.",
+            "The off switch is an off switch. Radical.",
+            "No \"we take your privacy seriously\" cosplay.",
+            "Built for people allergic to platforms.",
+            "Billing system not included. Fucking finally.",
+            "No blockchain. You're welcome.",
+            "Useful, boring, suspiciously honest.",
+            "Got pwned? There's nothing here. Anyway.",
+            "The server knows nothing. Be more like server.",
+            "The cookie banner was denied parole.",
+            "Toggle off. It's off.",
+            "The maintainer owns less of your data than your fridge.",
+            "The support portal is your shell history.",
+            "Acquisition: due diligence found principles.",
+            "The only engagement metric is \"did it work?\"",
+            "Ecosystem: whatever's growing behind your router.",
+            "Paranoia, but make it useful.",
+            "Location sharing with a spine.",
+            "Self-hosted amnesia.",
+            "SQLite was too much commitment.",
+            "Prometheus found no fire.",
+            "Sentry saw nothing. Suspicious.",
+            "Snowflake melted.",
+            "Google Analytics blocked at birth.",
+            "Consent banners: cookies for cowards.",
+            "Your key, your problem. Don't bother me.",
+            "You're not the product. There's no product.",
+            "Because \"we value your privacy\" means someone got caught.",
+            "Because the server should be dumber than the user.",
+            "Actual dials and switches. Like software used to have.",
+            "Settings powered by Android Holo, because taste existed.",
+            "Looks like the developer owned a phone in 2012.",
+            "Retro UI, modern paranoia.",
+            "Knobs look like knobs. Switches look like switches. Radical.",
+            "UX team: common sense.",
+            "Flat UI has no soul and weak ankles.",
+            "Back when devs cared whether apps were ugly.",
+            "Design debt? No, design taste.",
+            "UX so old it remembers trust.",
+            "Designed by someone who uses the app.",
+            "Holo is not dead. It is merely self-hosted.",
+            "Engagement loop: you closed the app.",
+            "DAU? My phone is one. Good enough.",
+            "The pivot meeting got canceled forever.",
+            "Roadmap: still on the back of the envelope.",
+            "Notifications you actually asked for. Imagine.",
+            "Settings page that doesn't ask if you're sure.",
+            "No \"smart\" anything. Just dumb pipes.",
+            "The dashboard is `htop`.",
+            "Powered by spite, caffeine and paranoia.",
+        ];
+        // Fisher-Yates shuffle so the order is fresh on every page load.
+        // Two visitors hitting the page at the same time still see a
+        // different sequence; one visitor refreshing sees a different
+        // first line and a different progression each time.
+        for (let i = taglines.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [taglines[i], taglines[j]] = [taglines[j], taglines[i]];
+        }
+        const el = document.getElementById('tagline-rotator');
+        if (!el) return;
+        // Replace the HTML-seeded line with the shuffled first one as soon
+        // as the script runs. Inline-at-end-of-body means this happens
+        // during initial render; any flash is sub-frame.
+        el.textContent = taglines[0];
+        let idx = 0;
+        let paused = false;
+        el.addEventListener('mouseenter', () => { paused = true; });
+        el.addEventListener('mouseleave', () => { paused = false; });
+        setInterval(() => {
+            if (paused) return;
+            el.style.opacity = '0';
+            setTimeout(() => {
+                idx = (idx + 1) % taglines.length;
+                el.textContent = taglines[idx];
+                el.style.opacity = '1';
+            }, 400);
+        }, 5500);
+    })();
+    </script>
+
+</body>
+</html>

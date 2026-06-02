@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Share location</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="apple-touch-icon" href="/static/favicon.png">
+    <link rel="stylesheet" href="https://esm.sh/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+    <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+    <div id="bar">
+        <div class="stat" id="stat-speed"><span class="label">Speed:</span> <span class="value" id="val-speed">-</span></div>
+        <div class="stat" id="stat-update"><span class="label">Last update:</span> <span class="value" id="val-update">-</span></div>
+        <div class="stat" id="stat-status">
+            <span class="label">status:</span>
+            <span class="led" id="val-status" data-state="off"></span>
+            <span class="status-note" id="val-status-note"></span>
+        </div>
+    </div>
+
+    <div id="map"></div>
+
+    <div id="controls">
+        <!-- Map-style cycle button: AUTO (follows OS theme) / LIGHT / DARK.
+             Single character label keeps the button on the 44-px grid the
+             other controls already sit on; the title attribute reads the
+             full cycle for hover users. State persists in localStorage. -->
+        <button class="ctrl-btn" id="btn-style"
+                aria-label="Map style"
+                title="Map style (auto / light / dark)"
+                data-mode="auto">A</button>
+        <button class="ctrl-btn icon-btn" id="btn-lock" aria-label="Toggle follow-position lock" data-locked="true"></button>
+        <button class="ctrl-btn icon-btn" id="btn-rotate" aria-label="Toggle map rotation"></button>
+        <button class="ctrl-btn" id="btn-zoom-in" aria-label="Zoom in">+</button>
+        <button class="ctrl-btn" id="btn-zoom-out" aria-label="Zoom out">−</button>
+    </div>
+
+    <div id="error-overlay" hidden></div>
+
+    <!-- Big "Connecting..." curtain shown whenever the WS isn't open (red LED).
+         Tied to setStatus(STATUS_OFF) so reconnect backoff windows + initial
+         dial both surface visually. Hidden by setStatus on transition to any
+         non-OFF state. -->
+    <div id="connecting-overlay" hidden>Connecting...</div>
+
+    <!-- Opt-in debug overlay - visible only when the URL has `?debug=1`.
+         Useful for in-the-field diagnosis when devtools aren't accessible. -->
+    <pre id="debug-overlay" hidden></pre>
+
+    <script type="module" src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session expired - Share location</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+    <link rel="stylesheet" href="/static/landing.css">
+</head>
+<body>
+
+    <header class="nameplate">
+        <h1>Session Expired</h1>
+        <p class="breadcrumb"><a href="/">← Back to main</a></p>
+    </header>
+
+    <main class="bench-single">
+        <section class="panel prose">
+            <p>This share session either expired or never existed in the first place. The server doesn't keep records of past sessions, so we genuinely can't tell you which.</p>
+
+            <p>Usually this means one of:</p>
+            <ul>
+                <li>The sender ended the share (toggled it off, or the share-timer ran out).</li>
+                <li>The server was restarted at some point after the link reached you.</li>
+                <li>The link got mangled in transit (truncated, copy-paste split, the access key in <code>?id=...</code> partially eaten).</li>
+            </ul>
+
+            <p>If you trust the source of the link, the simplest fix is to ask them to start a new share and send you a fresh URL. Each share gets a brand-new ephemeral access key and a brand-new inner encryption key - they're deliberately single-use.</p>
+        </section>
+    </main>
+
+    <footer class="nav">
+        <a href="/">Home</a>
+        <a href="/static/how-it-works.html">See how it works</a>
+        <a href="/static/privacy.html">Privacy policy</a>
+        <a href="https://github.com/DubbaThony/location-share" target="_blank" rel="noopener noreferrer">Source code</a>
+    </footer>
+
+</body>
+</html>

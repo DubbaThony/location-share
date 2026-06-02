@@ -1,0 +1,58 @@
+# syntax=docker/dockerfile:1.7
+#
+# One-shot keystore generator. Spits a PKCS12 keystore out the scratch
+# stage; password is passed in as a BuildKit secret so it never lands in
+# any image layer.
+#
+# Example (run from the REPO ROOT — the dir that has client/, server/, etc.):
+#
+#   mkdir -p ./keystore
+#   printf '%s' 'super-secret-pass' > ./keystore/storepass.txt
+#   chmod 600 ./keystore/storepass.txt
+#   docker build -f client/Android/docker/Dockerfile.keygen \
+#     --build-arg KEY_ALIAS=share \
+#     --build-arg DNAME='CN=DubbaThony Share, O=DubbaThony, C=PL' \
+#     --secret id=storepass,src=./keystore/storepass.txt \
+#     --output=./keystore \
+#     client/Android/docker
+#
+# Output: ./keystore/{release.jks, storepass.txt}
+#
+# The password file stays — release builds reuse the same secret. Host
+# disk is encrypted; anyone past that perimeter already wins, so plaintext
+# on disk beats losing the pass to a memory lapse.
+#
+# !!! Back the ./keystore dir up !!!
+# If you lose the keystore OR its password you can never push a signed
+# upgrade to the same app — existing installs will refuse the update
+# because the signing identity won't match.
+
+FROM eclipse-temurin:21-jdk-noble AS keygen
+
+ARG KEY_ALIAS=share
+# Customise this — it gets baked into the certificate. CN can be anything,
+# but Play Store / sideload installers will surface it.
+ARG DNAME="CN=DubbaThony Share, O=DubbaThony, C=PL"
+# Default validity ~30 years. Android won't accept signed APKs whose
+# signing certificate has expired.
+ARG VALIDITY_DAYS=10950
+
+RUN --mount=type=secret,id=storepass,target=/run/secrets/storepass,required=true \
+    set -eu; \
+    STOREPASS=$(cat /run/secrets/storepass); \
+    mkdir -p /out; \
+    # PKCS12 stores enforce store-password == key-password.
+    keytool -genkeypair \
+        -alias "${KEY_ALIAS}" \
+        -keyalg RSA \
+        -keysize 4096 \
+        -validity "${VALIDITY_DAYS}" \
+        -keystore /out/release.jks \
+        -storetype PKCS12 \
+        -storepass "${STOREPASS}" \
+        -keypass "${STOREPASS}" \
+        -dname "${DNAME}" \
+        -noprompt
+
+FROM scratch AS keystore
+COPY --from=keygen /out/release.jks /

@@ -1,0 +1,31 @@
+# .dockerignore for the APK build, which uses `client/` as the build context.
+# Without this file in place, the Android module's build/ and .gradle/ dirs
+# would stream into the daemon (multi-GB) on every invocation.
+#
+# Android.env and Android.env.defaults are deliberately NOT excluded - they
+# need to reach the build so Gradle can inject BuildConfig fields. They sit
+# at the context root next to Android/.
+
+# Massive Gradle / build dirs - regenerated from source inside the container.
+Android/build/
+Android/app/build/
+Android/protocol/build/
+Android/.gradle/
+
+# IDE / host-specific - useless inside the container.
+Android/.idea/
+Android/*.iml
+Android/local.properties
+
+# Dockerfiles themselves - loaded via `-f` from the host, never COPY'd.
+Android/docker/
+
+# Signing material - passed in as BuildKit secrets, must NOT enter the
+# build context. Defensive even though keystore/ normally lives at the
+# repo root (outside this context already).
+Android/keystore/
+keystore/
+
+# Local APK output dir from previous host-side builds.
+Android/out/
+out/

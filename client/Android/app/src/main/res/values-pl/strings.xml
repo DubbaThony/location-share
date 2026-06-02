@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Polish translations. Mirror of values/strings.xml - keys must match
+    1:1. Tone: impersonal where possible (Polish app convention), avoids
+    "ty/wy" forms. Technical terms (host, port, ping, push) kept in their
+    standard English-in-Polish form because that's what users see in
+    every other app and translating them produces unfamiliar text.
+
+    If a translation reads awkwardly in context, just edit it here -
+    no other file needs to know.
+-->
+<resources>
+
+    <!-- ===== Common ===== -->
+    <string name="common_back">← Wstecz</string>
+    <string name="common_ok">OK</string>
+    <string name="common_cancel">Anuluj</string>
+    <string name="common_dismiss">Odrzuć</string>
+    <string name="common_close">Zamknij</string>
+
+    <!-- ===== Main screen ===== -->
+    <string name="main_toggle_gps">GPS</string>
+    <string name="main_toggle_server">Serwer</string>
+    <string name="main_current_link">aktualny link</string>
+    <string name="main_copy">Kopiuj</string>
+    <string name="main_copied">Skopiowano do schowka</string>
+    <string name="main_share_time_dial">Czas udostępniania</string>
+    <string name="main_polling_rate_dial">Częstotliwość</string>
+    <string name="main_subs_label">subskrybentów</string>
+    <string name="main_time_left_label">pozostały czas</string>
+
+    <string name="toast_location_disabled">Lokalizacja wyłączona w ustawieniach systemu</string>
+
+    <!-- ===== HTTP-server confirmation dialog ===== -->
+    <string name="http_dialog_title">Adres HTTP serwera</string>
+    <string name="http_dialog_body">Adres URL widoku zaczyna się od http://, nie https://. Endpoint /identity, na którym opiera się weryfikacja tożsamości serwera, może być sfałszowany przez kogokolwiek w tej samej sieci - weryfikacja tożsamości serwera nie jest możliwa w bezpieczny sposób.\n\nAby mimo to kontynuować, włączymy opcję Ustawienia → Zaawansowane → \"Zezwól na adresy serwera HTTP\", żeby to okienko nie wyświetlało się za każdym razem. Wyłącz tę opcję później, jeśli chcesz je z powrotem.</string>
+    <string name="http_dialog_confirm">Zezwól na HTTP</string>
+
+    <!-- ===== Settings screen ===== -->
+    <string name="settings_title">Ustawienia</string>
+    <string name="settings_server_section">Serwer</string>
+    <string name="settings_host_label">host</string>
+    <string name="settings_port_label">port</string>
+    <string name="settings_viewer_url_section">Adres API</string>
+    <string name="settings_url_prefix_label">prefiks (link przed #)</string>
+    <string name="settings_power_section">Zasilanie</string>
+    <string name="settings_keep_awake_title">Utrzymuj CPU obudzony podczas udostępniania</string>
+    <string name="settings_keep_awake_desc">Utrzymuje częściową blokadę wybudzenia przez cały czas trwania połączenia. Pingi i GPS uruchamiają się punktualnie kosztem większego zużycia baterii.</string>
+    <string name="settings_direction_section">Kierunek</string>
+    <string name="settings_compass_only_title">Używaj tylko kompasu do określania kierunku</string>
+    <string name="settings_compass_only_desc">Gdy wyłączone (domyślnie): kierunek wyznaczany jest z ruchu podczas jazdy (prędkość > 2 km/h), z ostatnio znanego kierunku ruchu w bezruchu, kompas służy jako ostateczność. Gdy włączone: zawsze używaj kompasu.</string>
+    <string name="settings_notifications_row_title">Powiadomienia i alerty</string>
+    <string name="settings_notifications_row_desc">Ustawienia push, wibracji i auto-czyszczenia dla każdej klasy.</string>
+    <string name="settings_identity_row_title">Tożsamość serwera</string>
+    <string name="settings_identity_row_desc">Weryfikacja Ed25519 i auto-odświeżanie długoterminowego klucza serwera.</string>
+    <string name="settings_show_advanced_title">Pokaż ustawienia zaawansowane</string>
+    <string name="settings_show_advanced_desc">Pokrętła dla zaawansowanych: kadencja pingów, nakładka debug widoku, lista dozwolonych serwerów HTTP.</string>
+    <string name="settings_advanced_section">Zaawansowane</string>
+    <string name="settings_language_title">Język</string>
+    <string name="settings_language_auto">Auto (system)</string>
+    <string name="settings_allow_http_title">Zezwól na adresy serwera HTTP</string>
+    <string name="settings_allow_http_desc">Gdy wyłączone, adres http:// jest blokowany w momencie próby połączenia. Włączenie tej opcji oznacza, że atakujący w sieci może sfałszować /identity - weryfikacja tożsamości serwera nie jest możliwa w bezpieczny sposób.</string>
+    <string name="settings_ignore_ssl_title">Ignoruj błędy certyfikatu SSL</string>
+    <string name="settings_ignore_ssl_desc">Akceptuje dowolny certyfikat TLS przy pobieraniu /identity - bez walidacji łańcucha i sprawdzania nazwy hosta. Dla samodzielnie podpisanych serwerów w sieci LAN. To samo ryzyko MITM, co zezwolenie na HTTP: atakujący z fałszywym certyfikatem staje się nie do odróżnienia od prawdziwego serwera.</string>
+    <string name="settings_viewer_debug_title">Dołącz ?debug=1 do adresów widoku</string>
+    <string name="settings_viewer_debug_desc">Powoduje, że nakładka stanu jest widoczna w przeglądarce. Przydatne w terenie, gdy narzędzia developerskie są niedostępne.</string>
+    <string name="settings_ping_interval_label">interwał ping (sekundy)</string>
+    <string name="settings_btn_revert">Cofnij</string>
+    <string name="settings_btn_reset">Przywróć domyślne</string>
+    <string name="settings_btn_debug_view">Widok debugowania</string>
+    <string name="settings_btn_about">O aplikacji</string>
+
+    <!-- ===== About screen ===== -->
+    <string name="about_title">O aplikacji</string>
+    <string name="about_built_with_love">Zbudowane z miłością przez DubbaThony.</string>
+    <string name="about_app_label">Share location</string>
+    <string name="about_version_label">Wersja aplikacji</string>
+    <string name="about_version_value">%1$s (build %2$d)</string>
+    <string name="about_proto_version_label">Wersja protokołu</string>
+    <string name="about_min_sdk_label">Minimalny Android</string>
+    <string name="about_min_sdk_value">API %1$d (Android 9 Pie+)</string>
+
+    <string name="about_privacy_section">Polityka prywatności</string>
+    <string name="about_privacy_row_desc">Dotknij, aby przeczytać pełną politykę.</string>
+    <string name="privacy_last_updated">Ostatnia aktualizacja: 08.06.2026</string>
+    <string name="privacy_intro">To jest projekt hobbystyczny / self-hostowalny.\n\nTa aplikacja nie używa kont, analityki, reklam, śledzenia, profilowania, newsletterów ani plików cookie.</string>
+    <string name="privacy_section_location_title">Dane lokalizacji</string>
+    <string name="privacy_section_location_body">Udostępnianie lokalizacji jest szyfrowane end-to-end.\n\nSerwer tylko przekazuje zaszyfrowane dane między klientami. Serwer nigdy nie otrzymuje klucza szyfrującego i nie może odszyfrować ani przejrzeć danych lokalizacji w postaci niezaszyfrowanej.\n\nDane lokalizacji nie są zapisywane do bazy danych ani trwałego magazynu. Metadane połączenia mogą krótko istnieć w pamięci podczas działania usługi.</string>
+    <string name="privacy_section_logs_title">Logi</string>
+    <string name="privacy_section_logs_body">Serwer, reverse proxy, dostawca hostingu, Apache2 lub podobna infrastruktura mogą tworzyć logi dostępu.\n\nLogi te mogą zawierać adres IP, czas żądania, żądany URL, kod statusu HTTP, user agent, referrer i podobne techniczne dane żądania.\n\nRetencja logów zależy od konfiguracji serwera. Logi mogą być rotowane, usuwane lub przechowywane bezterminowo. Jeśli nie skonfigurowano usuwania ani rotacji, logi mogą pozostać do momentu ręcznego usunięcia.\n\nAplikacja może również wypisywać logi runtime na terminal, stdout, stderr, do journala systemd, logów Dockera, screena/tmuxa lub innego menedżera procesów.\n\nDomyślnie używany jest poziom logowania info. Logi debug mogą być włączone konfiguracyjnie.\n\nLogi debug runtime mogą zawierać znaczniki czasu, efemeryczne ID połączeń, efemeryczne ID lub klucze udostępnień, wewnętrzne komunikaty statusu, liczby widzów, błędy i zdarzenia połączenia/rozłączenia.\n\nLogi runtime nie zawierają niezaszyfrowanych danych lokalizacji. Zalogowane ID udostępnień, klucze lub URL-e mogą umożliwiać dostęp do zaszyfrowanego strumienia na żywo, ale odszyfrowanie tego strumienia wymaga klucza szyfrującego po stronie klienta, który nie jest wysyłany na serwer.</string>
+    <string name="privacy_section_why_title">Dlaczego dane są przetwarzane</string>
+    <string name="privacy_section_why_body">Dane są przetwarzane wyłącznie w celu świadczenia usługi, przekazywania zaszyfrowanych aktualizacji na żywo, debugowania problemów, zapobiegania nadużyciom i utrzymywania bezpieczeństwa usługi.</string>
+    <string name="privacy_section_sharing_title">Udostępnianie</string>
+    <string name="privacy_section_sharing_body">Zbieranie danych jest minimalizowane w stopniu technicznie możliwym.\n\nDane nie są sprzedawane, wynajmowane ani udostępniane do celów marketingowych.\n\nDane mogą być przetwarzane przez operatora serwera, dostawcę hostingu, reverse proxy, system logowania lub inną infrastrukturę używaną do uruchomienia tej instancji.</string>
+    <string name="privacy_section_selfhost_title">Instancje self-hostowane</string>
+    <string name="privacy_section_selfhost_body">To oprogramowanie może być self-hostowane. Każda instancja jest kontrolowana przez własnego operatora.\n\nOperator każdej instancji odpowiada za własne logi, retencję, bezpieczeństwo, hosting i zgodność prawną.</string>
+    <string name="privacy_section_contact_title">Kontakt</string>
+    <string name="privacy_section_contact_intro">Dla tej instancji, kontakt:</string>
+    <string name="privacy_section_contact_loading">Pobieranie z serwera...</string>
+    <string name="privacy_section_contact_unavailable">Niedostępny - %1$s</string>
+    <string name="privacy_contact_unset">operator nie opublikował adresu kontaktowego</string>
+
+    <string name="about_license_section">Licencja</string>
+    <string name="about_license_intro">Wydane na licencji Beerware (Revision 42):</string>
+    <string name="about_license_body">"THE BEERWARE LICENSE" (Revision 42):\n\nDubbaThony wrote this code. As long as you retain this notice, you can do whatever you want with this stuff. If we meet someday, and you think this stuff is worth it, you can buy me a beer in return.\n\n🍻</string>
+
+    <string name="about_libraries_section">Biblioteki open-source</string>
+    <string name="about_libraries_intro">Ten projekt stoi na ramionach tych świetnych projektów open-source:</string>
+    <string name="about_libraries_server_header">Serwer (Go)</string>
+    <string name="about_libraries_server_body">• caarlos0/env\n• gorilla/websocket\n• joho/godotenv\n• labstack/echo\n• rs/zerolog</string>
+    <string name="about_libraries_android_header">Android (Kotlin)</string>
+    <string name="about_libraries_android_body">• AndroidX Core / Activity / DataStore\n• Jetpack Compose (UI · Foundation · Material3)\n• Kotlinx Coroutines\n• BouncyCastle (Ed25519)</string>
+    <string name="about_libraries_web_header">Web viewer</string>
+    <string name="about_libraries_web_body">• MapLibre GL\n• PMTiles (Protomaps)\n• @noble/ciphers</string>
+    <string name="about_libraries_data_header">Dane mapy</string>
+    <string name="about_libraries_data_body">• Współtwórcy OpenStreetMap (ODbL)\n• Protomaps tile schema</string>
+
+    <!-- ===== About: weryfikacja wersji (tylko Zaawansowane) ===== -->
+    <string name="about_version_check_section">Odcisk wersji</string>
+    <string name="about_version_check_intro">Porównaj, co siedzi w tej instalacji APK z tym, co publikuje serwer. Przydatne przy self-hostingu, żeby potwierdzić, że na telefonie masz dokładnie tę wersję, którą wgrałeś do serwera.</string>
+    <string name="about_version_check_apk_hash_label">Skrót APK (SHA-512)</string>
+    <string name="about_version_check_signer_label">Podpisujący (SHA-256)</string>
+    <string name="about_version_check_unavailable">niedostępne</string>
+    <string name="about_version_check_button">Sprawdź względem serwera</string>
+    <string name="about_version_check_button_busy">Sprawdzanie...</string>
+    <string name="about_version_check_result_match">Ten APK jest identyczny z tym, który oferuje serwer.</string>
+    <string name="about_version_check_result_signer_only">Tego samego autora, ale to inna kompilacja niż ta na serwerze.</string>
+    <string name="about_version_check_result_mismatch">Ten APK został podpisany przez kogoś innego niż autor wersji na serwerze.</string>
+    <string name="about_version_check_result_no_publisher_data">Serwer nie opublikował odcisku wersji - nie ma czego porównywać.</string>
+    <string name="about_version_check_result_fetch_failed">Nie udało się połączyć z serwerem: %1$s</string>
+
+    <!-- ===== Server identity screen ===== -->
+    <string name="identity_title">Tożsamość serwera</string>
+    <string name="identity_verify_title">Włącz weryfikację tożsamości serwera</string>
+    <string name="identity_verify_desc">Podczas łączenia się UDP (handshake) weryfikuje podpis względem zaufanego klucza Ed25519 pobranego przez HTTPS. Wyłączenie tej opcji umożliwia aktywnemu atakującemu MITM odczytanie wszystkiego poza wewnętrznie zaszyfrowanymi danymi GPS.</string>
+    <string name="identity_auto_refresh_title">Auto-odświeżanie tożsamości serwera</string>
+    <string name="identity_auto_refresh_desc">Przy pierwszym połączeniu z nowym serwerem automatycznie pobiera /identity przez HTTPS. Wyłączenie = pierwsze połączenie zostanie odrzucone, dopóki nie naciśniesz Odśwież poniżej. Nigdy nie nadpisuje istniejącej tożsamości przy niezgodności podpisu - ta ścieżka wymaga jawnego użycia przycisku Odśwież.</string>
+    <string name="identity_refresh_mode_title">Powiadomienie przy odświeżeniu</string>
+    <string name="identity_refresh_mode_desc">Jak sygnalizować odświeżenie tożsamości serwera z tła.</string>
+    <string name="identity_refresh_mode_mute">Wyciszone</string>
+    <string name="identity_refresh_mode_toast">Toast</string>
+    <string name="identity_refresh_mode_popup">Wyskakujące okno</string>
+    <string name="identity_server_url_section">Adres URL serwera</string>
+    <string name="identity_server_url_unset">(nieskonfigurowany)</string>
+    <string name="identity_stored_section">Zapisana tożsamość</string>
+    <string name="identity_stored_none">(brak zapisanej tożsamości - pierwsze połączenie wywoła pobranie)</string>
+    <string name="identity_btn_refresh">Odśwież teraz</string>
+    <string name="identity_btn_refreshing">Odświeżanie...</string>
+    <string name="identity_btn_clear">Wyczyść</string>
+    <string name="identity_clear_dialog_title">Wyczyścić zapisaną tożsamość?</string>
+    <string name="identity_clear_dialog_body">Usuwa zaufany klucz Ed25519 dla %1$s. Następne połączenie będzie wymagało ponownego pobrania przez /identity (lub zostanie odrzucone, jeśli Auto-odświeżanie jest wyłączone).</string>
+    <string name="identity_clear_dialog_default_label">tego serwera</string>
+    <string name="identity_refresh_toast_success">Tożsamość serwera załadowana: 0x%1$s...</string>
+    <string name="identity_refresh_toast_clear">Zapisana tożsamość wyczyszczona</string>
+    <string name="identity_refresh_toast_http_fail">Odświeżenie nieudane: %1$s</string>
+    <string name="identity_refresh_toast_bad_response">Niepoprawna odpowiedź: %1$s</string>
+
+    <!-- ===== Foreground service notification ===== -->
+    <string name="service_status_sharing">udostępnianie - połączony + GPS</string>
+    <string name="service_status_connected">połączony, GPS wyłączony</string>
+    <string name="service_status_gps_only">GPS włączony, nie połączony</string>
+    <string name="service_status_idle">bezczynny</string>
+    <string name="service_action_stop_all">Zatrzymaj wszystko</string>
+
+    <!-- ===== Vibration patterns ===== -->
+    <string name="vib_none">Brak</string>
+    <string name="vib_short">Krótko</string>
+    <string name="vib_long">Długo</string>
+    <string name="vib_two_short">Krótko ×2</string>
+    <string name="vib_two_long">Długo ×2</string>
+    <string name="vib_three_short">Krótko ×3</string>
+
+    <!-- ===== Alert classes ===== -->
+    <string name="alert_conn_error_name">Błąd połączenia</string>
+    <string name="alert_lock_lost_name">Utracono lokalizację GPS</string>
+    <string name="alert_lock_lost_title">Utracono lokalizację GPS</string>
+    <string name="alert_lock_lost_detail">Sygnał utracony - pakiety wstrzymane do czasu odzyskania.</string>
+    <string name="alert_auto_stop_name">Udostępnianie zakończone (auto-stop)</string>
+    <string name="alert_auto_stop_title">Udostępnianie zakończone</string>
+    <string name="alert_auto_stop_detail">Czas udostępniania upłynął - połączenie zatrzymane.</string>
+    <string name="alert_net_unstable_name">Niestabilna sieć</string>
+    <string name="alert_net_unstable_title">Niestabilna sieć</string>
+    <string name="alert_net_unstable_detail">Brak odpowiedzi serwera od %1$d s - sesja nadal aktywna, protokół ponawia próby.</string>
+    <string name="alert_net_unstable_extra_label">Próg ciszy</string>
+    <string name="alert_net_unstable_extra_help">Liczba sekund bez ponga zanim ten alert zostanie wywołany. Sesja NIE jest zabijana - jedyną ścieżką zabicia sesji jest specyfikowany limit ctrl-deadline (600 s).</string>
+
+    <string name="tldr_off">Wyłączone</string>
+    <string name="tldr_push">push</string>
+    <string name="tldr_silent">ciche</string>
+    <string name="tldr_on_template">Włączone · %1$s · %2$s</string>
+
+    <!-- ===== Notifications list screen ===== -->
+    <string name="notifications_title">Powiadomienia i alerty</string>
+
+    <!-- ===== Alert-edit screen ===== -->
+    <string name="alert_edit_enabled_title">Włączone</string>
+    <string name="alert_edit_enabled_desc">Główny przełącznik. Gdy wyłączony, ten alert nigdy się nie pojawia.</string>
+    <string name="alert_edit_push_title">Powiadomienie push</string>
+    <string name="alert_edit_push_desc">Powiadomienie heads-up systemu. Wyłączone = tylko wibracje (jeśli wybrany jest wzór).</string>
+    <string name="alert_edit_vibration_label">Wibracje</string>
+    <string name="alert_edit_vibration_picker_title">Wzór wibracji</string>
+    <string name="alert_edit_auto_cancel_title">Auto-czyszczenie po rozwiązaniu</string>
+    <string name="alert_edit_auto_cancel_desc">Usuwa powiadomienie systemowe, gdy warunek wyzwalający zostanie rozwiązany (odzyskanie sygnału, pong wraca, nowa sesja, użytkownik zamyka dialog, ...).</string>
+    <string name="alert_edit_int_seconds_label">sekundy (%1$d..%2$d)</string>
+
+    <!-- ===== Debug screen ===== -->
+    <string name="debug_title">Debug</string>
+    <string name="debug_log_section">Dziennik</string>
+    <string name="debug_btn_clear">Wyczyść dziennik</string>
+    <string name="debug_btn_export">Eksportuj</string>
+    <string name="debug_btn_share">Udostępnij</string>
+    <string name="debug_empty">(brak wpisów dziennika)</string>
+
+    <!-- ===== Main screen extras ===== -->
+    <string name="main_status_idle">bezczynny</string>
+    <string name="main_status_dialing">łączenie...</string>
+    <string name="main_status_ready">gotowy</string>
+    <string name="main_status_active">aktywny</string>
+    <string name="main_picker_share_time">Czas udostępniania</string>
+    <string name="main_picker_polling_rate">Częstotliwość</string>
+    <string name="main_no_link">(brak linku - rozpocznij sesję)</string>
+    <string name="main_dial_label_share_time">czas udostępniania</string>
+    <string name="main_dial_label_polling_rate">częstotliwość (akt/s)</string>
+    <string name="main_label_current_link">aktualny link:</string>
+    <string name="main_value_link_unavailable">n/d</string>
+    <string name="main_label_stream_consumers">liczba odbiorców:</string>
+    <string name="main_label_time_left">pozostały czas:</string>
+
+    <string name="main_time_left_format">%1$d:%2$02d</string>
+
+    <!-- ===== Driver errors (UiError) ===== -->
+    <string name="err_no_response_title">Serwer nie odpowiedział</string>
+    <string name="err_no_response_detail">%1$s:%2$d - pakiet UDP wysłany, brak odpowiedzi w ciągu %3$d s. Sprawdź, czy serwer działa i czy host/port są poprawne w Ustawieniach.</string>
+    <string name="err_unexpected_response_title">Nieoczekiwana odpowiedź serwera</string>
+    <string name="err_unexpected_response_detail">Otrzymano typ ramki %1$d, oczekiwano HandshakeServer. Możliwe, że łączysz się z niewłaściwym serwisem na %2$s:%3$d.</string>
+    <string name="err_malformed_response_title">Zniekształcona odpowiedź serwera</string>
+    <string name="err_malformed_response_detail">Otrzymano ramkę HandshakeServer, ale nie udało się jej zdekodować. Najprawdopodobniej niezgodność wersji protokołu lub niewłaściwy serwer na tym porcie.</string>
+    <string name="err_proto_too_high_title">Aplikacja nowsza niż serwer</string>
+    <string name="err_proto_too_high_detail">Serwer pod adresem %1$s używa starszej wersji protokołu niż ta aplikacja. Pasujący starszy APK najprawdopodobniej znajduje się na tym samym serwerze - adres URL widoku wskazuje gdzie szukać.\n\nUwaga: instalacja starszego APK będzie prawdopodobnie wymagała wcześniejszego odinstalowania obecnego. Różne buildy (i różni self-hosterzy) podpisują różnymi kluczami, a Android odmawia podmiany między różnymi kluczami.</string>
+    <string name="err_proto_too_low_title">Aplikacja starsza niż serwer</string>
+    <string name="err_proto_too_low_detail">Serwer pod adresem %1$s oczekuje nowszej wersji protokołu niż ta aplikacja. Pasujący nowszy APK znajduje się na tym samym serwerze.\n\nUwaga: jeśli nowszy APK jest podpisany innym kluczem niż obecna instalacja (inny self-hoster lub przebudowany z nowym kluczem), Android odmówi aktualizacji nad istniejącą aplikacją - najpierw odinstaluj.</string>
+    <string name="err_proto_download_label_old">Pobierz pasujący APK</string>
+    <string name="err_proto_download_label_new">Pobierz nowszy APK</string>
+    <string name="err_server_refused_title">Serwer odrzucił handshake</string>
+    <string name="err_server_refused_detail">Kod statusu %1$d. Brak płynnego odzyskania - spróbuj ponownie, potem sprawdź log serwera.</string>
+    <string name="err_identity_check_failed_title">Weryfikacja tożsamości serwera nieudana</string>
+    <string name="err_identity_check_failed_detail">Podpis handshake UDP nie pasuje do zaufanego klucza Ed25519 dla %1$s. Auto-odświeżanie albo się nie powiodło, albo jest wyłączone, więc nie da się stwierdzić, czy jest to legalna rotacja klucza czy man-in-the-middle. Otwórz Ustawienia → Tożsamość serwera, naciśnij Odśwież i zweryfikuj nowy fingerprint poza pasmem przed ponownym połączeniem.</string>
+    <string name="err_identity_mitm_title">Weryfikacja tożsamości serwera nieudana (wykryto MITM UDP)</string>
+    <string name="err_identity_mitm_detail">HTTPS potwierdził, że tożsamość serwera się nie zmieniła, ale podpis handshake UDP nie pasuje. Coś aktywnie fałszuje ruch UDP między tym urządzeniem a %1$s. Kanał HTTPS wygląda na nienaruszony - nie łącz się ponownie z tej sieci.</string>
+    <string name="err_identity_critical_title">Weryfikacja tożsamości serwera nieudana (krytyczne)</string>
+    <string name="err_identity_critical_detail">Ponownie pobrana tożsamość przez HTTPS jest INNA, ale podpis handshake UDP też nie zgadza się z tym kluczem. Albo serwer jest źle skonfigurowany, albo zarówno HTTPS jak i UDP są przechwytywane. Nie łącz się ponownie.</string>
+    <string name="err_invalid_port_title">Niepoprawny port</string>
+    <string name="err_invalid_port_detail">Próbowano połączyć się z portem %1$d - to nie jest prawidłowy port sieciowy. Otwórz Ustawienia i ustaw port serwera w zakresie 1-65535.</string>
+    <string name="err_invalid_host_title">Niepoprawny host</string>
+    <string name="err_invalid_host_detail">Host serwera jest pusty. Otwórz Ustawienia i ustaw nazwę hosta lub adres IP serwera.</string>
+    <string name="err_invalid_connection_settings_title">Niepoprawne ustawienia połączenia</string>
+    <string name="err_invalid_connection_settings_detail">host=%1$s, port=%2$d, pingMs=%3$d\n\nOtwórz Ustawienia, upewnij się, że host to nazwa/IP i port jest w zakresie 1-65535.</string>
+    <string name="err_invalid_connection_settings_host_empty">(pusty)</string>
+
+    <!-- ===== Identity-resolution errors ===== -->
+    <string name="err_identity_not_stored_title">Brak zapisanej tożsamości serwera</string>
+    <string name="err_identity_not_stored_detail">Brak zaufanego klucza Ed25519 w cache dla %1$s, a Auto-odświeżanie jest wyłączone. Otwórz Ustawienia → Tożsamość serwera i naciśnij Odśwież, a następnie połącz ponownie.</string>
+    <string name="err_identity_cant_fetch_title">Nie można pobrać tożsamości serwera</string>
+    <string name="err_identity_cant_fetch_detail">Brak skonfigurowanego adresu URL widoku do pobrania /identity. Otwórz Ustawienia, ustaw adres URL widoku (np. http://%1$s:8049/) i spróbuj ponownie.</string>
+    <string name="err_identity_fetch_failed_title">Nie udało się pobrać tożsamości serwera</string>
+    <string name="err_identity_fetch_failed_detail">Próbowano wykonać GET %1$s, ale: %2$s\n\nWeryfikacja tożsamości serwera jest wymagana przed jakimkolwiek ruchem UDP.</string>
+    <string name="err_identity_bad_response_title">Niepoprawna odpowiedź tożsamości serwera</string>
+    <string name="err_identity_bad_response_detail">Pobrano %1$s, ale: %2$s</string>
+
+    <!-- ===== IdentityFetcher inner-message strings ===== -->
+    <string name="ident_fetch_url_blank">Brak skonfigurowanego prefiksu URL w Ustawieniach</string>
+    <string name="ident_fetch_url_unparseable">Prefiks URL nie jest parsowalny</string>
+    <string name="ident_fetch_connect_failed">połączenie nieudane: %1$s</string>
+    <string name="ident_fetch_http_status">HTTP %1$d z %2$s</string>
+    <string name="ident_fetch_read_failed">odczyt nieudany: %1$s</string>
+    <string name="ident_fetch_not_json">odpowiedź nie jest formatem JSON: %1$s</string>
+    <string name="ident_fetch_status_false">serwer zwrócił status=false</string>
+    <string name="ident_fetch_missing_result">w odpowiedzi brakuje pola \'result\'</string>
+    <string name="ident_fetch_bad_hex_length">oczekiwano 64-znakowego ciągu hex, otrzymano %1$d znaków</string>
+    <string name="ident_fetch_non_hex">niedozwolony znak hex w polu \'result\'</string>
+
+    <!-- ===== Identity refresh notification (POPUP mode) ===== -->
+    <string name="identity_refresh_notif_title">Tożsamość serwera załadowana</string>
+    <string name="identity_refresh_notif_content">Fingerprint 0x%1$s...</string>
+    <string name="identity_refresh_notif_full">Pełny klucz: 0x%1$s</string>
+
+    <!-- ===== Mid-handshake / runtime driver errors ===== -->
+    <string name="err_midhandshake_quiet_title">Serwer przestał odpowiadać w trakcie handshake</string>
+    <string name="err_midhandshake_quiet_detail">Pierwszy etap handshake przeszedł, a potem serwer zamilkł. Najprawdopodobniej utracono ścieżkę UDP lub serwer się zawiesił po pierwszej odpowiedzi.</string>
+    <string name="err_unexpected_response_encrypted_detail">Otrzymano typ ramki %1$d, oczekiwano EncryptedHandshakeServer.</string>
+    <string name="err_crypto_handshake_title">Handshake kryptograficzny nieudany</string>
+    <string name="err_crypto_handshake_detail">Nie udało się odszyfrować odpowiedzi serwera - ECDH wyprowadził różne klucze po obu stronach. Zwykle oznacza niezgodność wersji protokołu.</string>
+    <string name="err_ctrl_timed_out_title">Ramka kontrolna przekroczyła limit czasu</string>
+    <string name="err_ctrl_timed_out_detail">Serwer nie potwierdził ramki kontrolnej w ciągu %1$d s. Zgodnie ze specyfikacją połączenie zostaje uznane za martwe. Przełącz Serwer wyłącz / włącz, żeby uzyskać nową sesję.</string>
+    <string name="err_port_unreachable_title">Port serwera nieosiągalny</string>
+    <string name="err_port_unreachable_detail">ICMP port-unreachable z %1$s:%2$d. Albo serwer nie nasłuchuje, albo zrestartował się i utracił naszą sesję. Przełącz Serwer wyłącz / włącz, żeby uzyskać nową sesję.</string>
+    <string name="err_network_title">Błąd sieci</string>
+    <string name="err_network_detail">%1$s: %2$s\n\nNajczęstsze przyczyny: zła nazwa hosta (DNS), brak łączności sieciowej lub firewall blokujący UDP %3$d. Sprawdź Ustawienia → Host serwera / port.</string>
+    <string name="err_network_no_detail">brak szczegółów</string>
+
+    <string name="alert_lock_lost_detail_system_off">Lokalizacja została wyłączona w ustawieniach systemu.</string>
+
+    <string name="service_notif_title">Share location</string>
+    <string name="service_notif_action_stop">Zatrzymaj</string>
+
+    <!-- ===== Server-initiated ctrl exits ===== -->
+    <string name="err_server_bye_title">Serwer pożegnał</string>
+    <string name="err_server_bye_detail">Serwer płynnie zakończył tę sesję.</string>
+    <string name="err_server_fatal_title">Błąd krytyczny serwera</string>
+    <string name="err_server_fatal_detail">Serwer zakończył połączenie z błędem krytycznym (brak komunikatu). Przełącz Serwer wyłącz / włącz, żeby spróbować ponownie.</string>
+    <string name="err_server_fatal_msg_detail">Wiadomość serwera: %1$s</string>
+    <string name="err_server_fatal_msg_unreadable">(nieczytelne)</string>
+    <string name="err_server_shutting_down_title">Serwer się wyłącza</string>
+    <string name="err_server_shutting_down_detail">Serwer ogłosił czyste wyłączenie. Spróbuj ponownie, gdy wróci.</string>
+
+</resources>
