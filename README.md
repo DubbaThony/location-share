@@ -1,9 +1,9 @@
-[![forthebadge](/badges/built-for-android.svg)](https://forthebadge.com)
-[![forthebadge](/badges/built-with-resentment.svg)](https://forthebadge.com)
-[![forthebadge](/badges/made-with-go.svg)](https://forthebadge.com)
-[![forthebadge](/badges/made-with-kotlin.svg)](https://forthebadge.com)
-[![forthebadge](https://forthebadge.com/api/badges/community/019b4b6c-a55a-74d3-997a-8cdb89f5d7d6.svg)](https://forthebadge.com)
-[![forthebadge](data:image/svg+xml;base64,PHN2ZyBkYXRhLXYtODY1ODNhZmQ9IiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMTU2LjQyMDA3MDY0ODE5MzM2IiBoZWlnaHQ9IjM1IiB2aWV3Qm94PSIwIDAgMTU2LjQyMDA3MDY0ODE5MzM2IDM1IiBjbGFzcz0iYmFkZ2Utc3ZnIj48ZGVmcyBkYXRhLXYtODY1ODNhZmQ9IiI+PCEtLS0tPjwhLS0tLT48IS0tLS0+PC9kZWZzPjxyZWN0IGRhdGEtdi04NjU4M2FmZD0iIiB3aWR0aD0iOTcuNzQxODg5OTUzNjEzMjgiIGhlaWdodD0iMzUiIGZpbGw9IiMzMUM0RjMiLz48cmVjdCBkYXRhLXYtODY1ODNhZmQ9IiIgeD0iOTcuNzQxODg5OTUzNjEzMjgiIHdpZHRoPSI1OC42NzgxODA2OTQ1ODAwOCIgaGVpZ2h0PSIzNSIgZmlsbD0iIzM4OUFENSIvPjwhLS0tLT48dGV4dCBkYXRhLXYtODY1ODNhZmQ9IiIgeD0iNDguODcwOTQ0OTc2ODA2NjQiIHk9IjE3LjUiIGR5PSIwLjM1ZW0iIGZvbnQtc2l6ZT0iMTIiIGZvbnQtZmFtaWx5PSJSb2JvdG8sIHNhbnMtc2VyaWYiIGZpbGw9IiNGRkZGRkYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGxldHRlci1zcGFjaW5nPSIyIiBmb250LXdlaWdodD0iNjAwIiBmb250LXN0eWxlPSJub3JtYWwiIHRleHQtZGVjb3JhdGlvbj0ibm9uZSIgZmlsbC1vcGFjaXR5PSIxIiBmb250LXZhcmlhbnQ9Im5vcm1hbCIgc3R5bGU9InRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7Ij5DT05UQUlOUzwvdGV4dD48IS0tLS0+PHRleHQgZGF0YS12LTg2NTgzYWZkPSIiIHg9IjEyNy4wODA5ODAzMDA5MDMzMiIgeT0iMTcuNSIgZHk9IjAuMzVlbSIgZm9udC1zaXplPSIxMiIgZm9udC1mYW1pbHk9Ik1vbnRzZXJyYXQsIHNhbnMtc2VyaWYiIGZpbGw9IiNGRkZGRkYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtd2VpZ2h0PSI5MDAiIGxldHRlci1zcGFjaW5nPSIyIiBmb250LXN0eWxlPSJub3JtYWwiIHRleHQtZGVjb3JhdGlvbj0ibm9uZSIgZmlsbC1vcGFjaXR5PSIxIiBmb250LXZhcmlhbnQ9Im5vcm1hbCIgc3R5bGU9InRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7Ij5FMkVFPC90ZXh0PjwhLS0tLT48L3N2Zz4=)](https://forthebadge.com)
+[![built-for-android](/badges/built-for-android.svg)](https://forthebadge.com)
+[![built-with-resentment](/badges/built-with-resentment.svg)](https://forthebadge.com)
+[![made-with-go](/badges/made-with-go.svg)](https://forthebadge.com)
+[![made-with-kotlin](/badges/made-with-kotlin.svg)](https://forthebadge.com)
+[![made-with-love](/badges/made-with-love.svg)](https://forthebadge.com)
+[![contains-e2ee](/badges/contains-e2ee.svg)](https://forthebadge.com)
 # Private Location Sharing app
 
 ## I dont have time for this
