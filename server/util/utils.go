@@ -5,6 +5,8 @@ import (
 	"errors"
 	"fmt"
 	"unsafe"
+
+	"github.com/rs/zerolog"
 )
 
 type SInts interface {
@@ -62,4 +64,8 @@ func CSPRNGString(length uint16) string {
 
 func P[t any](v t) *t {
 	return &v
+}
+
+func LComp(l zerolog.Logger, component string) zerolog.Logger {
+	return l.With().Str("component", component).Logger()
 }

@@ -20,4 +20,7 @@ type Config interface {
 	MapLocation() string
 	ComplianceEmailAddr() string
 	MeteredSocket() bool
+	DebugFaultySocket() bool
+	DebugFaultySocketTXPLPerc() uint8
+	DebugFaultySocketRXPLPerc() uint8
 }

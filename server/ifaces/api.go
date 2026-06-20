@@ -1,5 +1,7 @@
 package ifaces
 
+import "github.com/labstack/echo/v4"
+
 type BasicResponse[T any] struct {
 	Status bool    `json:"status"`
 	Error  *string `json:"error,omitempty"`
@@ -21,4 +23,8 @@ type AppConfig struct {
 	Identity              string  `json:"identity"`
 	PrefferedAppBuildHash *string `json:"preffered_app_build_hash"`
 	LocalSigner           *string `json:"local_signer"`
+}
+
+type ApiServer interface {
+	InstallRoutes(e *echo.Echo)
 }

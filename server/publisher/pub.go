@@ -32,14 +32,13 @@ type publisher struct {
 	key2id map[string]uint64
 }
 
-func New(l zerolog.Logger) (ifaces.Publisher, echo.HandlerFunc) {
-	p := &publisher{
+func New(l zerolog.Logger) ifaces.Publisher {
+	return &publisher{
 		l:      l,
 		chMu:   &sync.RWMutex{},
 		chMap:  util.NewMuMap[uint64, channel](),
 		key2id: make(map[string]uint64),
 	}
-	return p, p.echoHandler()
 }
 
 func (p *publisher) Create(u uint64, s string) error {
@@ -89,6 +88,13 @@ func (p *publisher) Exists(key string) bool {
 	defer p.chMu.Unlock()
 	_, ok := p.key2id[key]
 	return ok
+}
+
+// tech debt
+// todo: fixme: get rid of echo.* code in this package, instead produce some kind of intermidiary package for communication
+// between api and publisher
+func (p *publisher) EchoHandler() echo.HandlerFunc {
+	return p.echoHandler()
 }
 
 func (p *publisher) echoHandler() echo.HandlerFunc {

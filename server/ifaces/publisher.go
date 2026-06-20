@@ -1,5 +1,7 @@
 package ifaces
 
+import "github.com/labstack/echo/v4"
+
 // Publisher is api side
 type Publisher interface {
 	Create(uint64, string) error
@@ -7,4 +9,5 @@ type Publisher interface {
 	CountSubs(uint64) (uint64, error)
 	Teardown(uint64)
 	Exists(key string) bool
+	EchoHandler() echo.HandlerFunc
 }

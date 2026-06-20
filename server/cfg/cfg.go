@@ -10,13 +10,16 @@ import (
 )
 
 type Fields struct {
-	UDPPort             uint16          `env:"UDP_PORT,required,notEmpty"`
-	ApiListen           string          `env:"API_LISTEN,required,notEmpty"`
-	LogLevel            ifaces.LogLevel `env:"LOG_LEVEL,required,notEmpty"`
-	TraceInLogs         bool            `env:"TRACES_IN_LOGS" envDefault:"false"`
-	MeteredSocket       bool            `env:"METERED_SOCKET" envDefault:"true"`
-	MapLocation         string          `env:"MAP_LOCATION" envDefault:"map"`
-	CompilanceEmailAddr string          `env:"ADMIN_CONTACT"`
+	UDPPort                   uint16          `env:"UDP_PORT,required,notEmpty"`
+	ApiListen                 string          `env:"API_LISTEN,required,notEmpty"`
+	LogLevel                  ifaces.LogLevel `env:"LOG_LEVEL,required,notEmpty"`
+	TraceInLogs               bool            `env:"TRACES_IN_LOGS" envDefault:"false"`
+	MeteredSocket             bool            `env:"METERED_SOCKET" envDefault:"true"`
+	MapLocation               string          `env:"MAP_LOCATION" envDefault:"map"`
+	CompilanceEmailAddr       string          `env:"ADMIN_CONTACT"`
+	DebugFaultySocket         bool            `env:"DEBUG_FFAULTY_SOCKET" envDefault:"false"`
+	DebugFaultySocketRXPLPerc uint8           `env:"DEBUG_FAULTY_SOCKET_RX_PL_PERC" envDefault:"10"`
+	DebugFaultySocketTXPLPerc uint8           `env:"DEBUG_FAULTY_SOCKET_TX_PL_PERC" envDefault:"10"`
 }
 
 type config struct {
@@ -86,4 +89,16 @@ func (c config) ComplianceEmailAddr() string {
 
 func (c config) MeteredSocket() bool {
 	return c.f.MeteredSocket
+}
+
+func (c config) DebugFaultySocket() bool {
+	return c.f.DebugFaultySocket
+}
+
+func (c config) DebugFaultySocketTXPLPerc() uint8 {
+	return c.f.DebugFaultySocketTXPLPerc
+}
+
+func (c config) DebugFaultySocketRXPLPerc() uint8 {
+	return c.f.DebugFaultySocketRXPLPerc
 }
