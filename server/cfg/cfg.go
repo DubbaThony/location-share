@@ -17,7 +17,7 @@ type Fields struct {
 	MeteredSocket             bool            `env:"METERED_SOCKET" envDefault:"true"`
 	MapLocation               string          `env:"MAP_LOCATION" envDefault:"map"`
 	CompilanceEmailAddr       string          `env:"ADMIN_CONTACT"`
-	DebugFaultySocket         bool            `env:"DEBUG_FFAULTY_SOCKET" envDefault:"false"`
+	DebugFaultySocket         bool            `env:"DEBUG_FAULTY_SOCKET" envDefault:"false"`
 	DebugFaultySocketRXPLPerc uint8           `env:"DEBUG_FAULTY_SOCKET_RX_PL_PERC" envDefault:"10"`
 	DebugFaultySocketTXPLPerc uint8           `env:"DEBUG_FAULTY_SOCKET_TX_PL_PERC" envDefault:"10"`
 }
